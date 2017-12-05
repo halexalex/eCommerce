@@ -1,0 +1,10 @@
+settings.py
+media/*
+db.sqlite3
+__pycache__
+.ropeproject
+.idea
+.DS_Store
+*~
+*.pyc
+*.bat
