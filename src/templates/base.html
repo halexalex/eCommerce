@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+
+{% load static %}
+
+<html lang="en">
+
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <title>Title</title>
+      {% include 'base/css.html' %}
+      {% block base_head %}
+      {% endblock base_head %}
+    </head>
+
+    <body>
+
+        {% include 'base/navbar.html' with brand_name='eCommerce' %}
+
+        {% block content %}{% endblock content %}
+
+        {% include 'base/js.html' %}
+
+    </body>
+
+</html>

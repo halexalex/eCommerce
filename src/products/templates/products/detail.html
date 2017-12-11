@@ -1,10 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base.html' %}
+
+{% block content  %}
 
     {{ object.title }} <br>
     {{ object.description }} <br>
@@ -12,5 +9,4 @@
         <img src="{{ object.image.url }}" alt="" class="img-fluid">
     {% endif %}
 
-</body>
-</html>
+{% endblock content  %}
