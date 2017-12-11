@@ -1,15 +1,16 @@
 from django.conf import settings
-from django.conf.urls import url, include
+from django.conf.urls import include, url
 from django.conf.urls.static import static
 from django.contrib import admin
+
+from .views import (about_page, contact_page, home_page, login_page,
+                    register_page)
 
 # from products.views import (ProductDetailSlugView, ProductDetailView,
 #                             ProductFeaturedDetailView, ProductFeaturedListView,
 #                             ProductListView, product_detail_view,
 #                             product_list_view)
 
-from .views import (about_page, contact_page, home_page, login_page,
-                    register_page)
 
 urlpatterns = [
     url(r'^$', home_page),
@@ -17,7 +18,7 @@ urlpatterns = [
     url(r'^contact/$', contact_page),
     url(r'^login/$', login_page),
     url(r'^register/$', register_page),
-    url(r'^products/', include('products.urls')),
+    url(r'^products/', include('products.urls', namespace='products')),
     # url(r'^products/$', ProductListView.as_view()),
     # url(r'^featured/$', ProductFeaturedListView.as_view()),
     # url(r'^featured/(?P<pk>\d+)/$', ProductFeaturedDetailView.as_view()),
