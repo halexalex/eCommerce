@@ -1,5 +1,5 @@
-from django.contrib.auth import authenticate, login, get_user_model
-from django.shortcuts import render, redirect
+from django.contrib.auth import authenticate, get_user_model, login
+from django.shortcuts import redirect, render
 
 from .forms import ContactForm, LoginForm, RegisterForm
 
