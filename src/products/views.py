@@ -63,7 +63,6 @@ class ProductDetailSlugView(DetailView):
         return instance
 
 
-
 class ProductDetailView(DetailView):
     # queryset = Product.objects.all()
     template_name = 'products/detail.html'
