@@ -1,6 +1,7 @@
 settings.py
 media/*
 db.sqlite3
+credentials.py
 __pycache__
 .ropeproject
 .idea
