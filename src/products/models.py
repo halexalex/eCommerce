@@ -54,8 +54,9 @@ class Product(models.Model):
     description = models.TextField()
     price       = models.DecimalField(decimal_places=2, max_digits=19, default=39.99)
     image       = models.ImageField(upload_to=upload_image_path, null=True, blank=True)
-    featured    = models.BooleanField(default=False)
+    featured    = models.BooleanField(default=True)
     active      = models.BooleanField(default=True)
+    timestamp   = models.DateTimeField(auto_now_add=True)
 
     objects = ProductManager()
 
