@@ -12,22 +12,21 @@
         <h1>{{ title }}</h1>
         <h1>Hello, world we`re working</h1>
     </div>
-    <div class="container">
-        <div class="row">
-            <div class="col">
-                <img src="{% static 'img/iceland.jpg' %}" alt="iceland" class="img-fluid">
-                <p>{{ content }}</p>
-            </div>
+    <div class="row">
+        <div class="col">
+            <img src="{% static 'img/iceland.jpg' %}" alt="iceland" class="img-fluid">
+            <p>{{ content }}</p>
         </div>
-        {% if request.user.is_authenticated %}
-        <div class="row">
-            <div class="col">
-                <h1>Premium content</h1>
-                <p>{{ premium_content }}</p>
-            </div>
-        </div>
-    {% endif %}
     </div>
+    {% if request.user.is_authenticated %}
+    <div class="row">
+        <div class="col">
+            <h1>Premium content</h1>
+            <p>{{ premium_content }}</p>
+        </div>
+    </div>
+    {% endif %}
+
 {% endblock content %}
 
 
