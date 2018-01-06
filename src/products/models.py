@@ -1,10 +1,9 @@
 import os
 import random
 
-
 from django.db import models
 from django.db.models import Q
-from django.db.models.signals import post_save, pre_save
+from django.db.models.signals import pre_save
 from django.urls import reverse
 
 from .utils import unique_slug_generator
