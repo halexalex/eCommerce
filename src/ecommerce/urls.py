@@ -2,10 +2,10 @@ from django.conf import settings
 from django.conf.urls import include, url
 from django.conf.urls.static import static
 from django.contrib import admin
+from django.views.generic import TemplateView
 
 from .views import (about_page, contact_page, home_page, login_page,
                     register_page)
-from django.views.generic import TemplateView
 
 # from products.views import (ProductDetailSlugView, ProductDetailView,
 #                             ProductFeaturedDetailView, ProductFeaturedListView,
