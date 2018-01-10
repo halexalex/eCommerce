@@ -77,6 +77,10 @@ class Product(models.Model):
     def __str__(self):
         return self.title
 
+    @property
+    def name(self):
+        return self.title
+
     # For python 2
     # def __unicode__(self):
     #     return self.title
