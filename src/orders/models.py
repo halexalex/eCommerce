@@ -1,6 +1,8 @@
 import math
+
 from django.db import models
-from django.db.models.signals import pre_save, post_save
+from django.db.models.signals import post_save, pre_save
+
 from carts.models import Cart
 from ecommerce.utils import unique_order_id_generator
 
@@ -65,4 +67,3 @@ def post_save_order(sender, instance, created, *args, **kwargs):
 
 
 post_save.connect(post_save_order, sender=Order)
-

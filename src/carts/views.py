@@ -36,4 +36,3 @@ def checkout_home(request):
     else:
         order_obj, new_order_obj = Order.objects.get_or_create(cart=cart_obj)
     return render(request, 'carts/checkout.html',  {'object': order_obj})
-
