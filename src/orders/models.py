@@ -19,25 +19,31 @@ ORDER_STATUS_CHOICES = (
 class OrderManager(models.Manager):
     def new_or_get(self, billing_profile, cart_obj):
         created = False
-        qs = self.get_queryset().filter(billing_profile=billing_profile, cart=cart_obj, active=True)
+        qs = self.get_queryset().filter(billing_profile=billing_profile,
+                                        cart=cart_obj,
+                                        active=True,
+                                        status='created'
+                                        )
         if qs.count() == 1:
             obj = qs.first()
         else:
-            obj = self.model.objects.create(billing_profile=billing_profile, cart=cart_obj)
+            obj = self.model.objects.create(billing_profile=billing_profile,
+                                            cart=cart_obj
+                                            )
             created = True
         return obj, created
 
 
 class Order(models.Model):
-    billing_profile  = models.ForeignKey(BillingProfile, null=True, blank=True)
-    order_id         = models.CharField(max_length=120, blank=True)  # e.g. AB31DE3
+    billing_profile = models.ForeignKey(BillingProfile, null=True, blank=True)
+    order_id = models.CharField(max_length=120, blank=True)  # e.g. AB31DE3
     shipping_address = models.ForeignKey(Address, related_name="shipping_address", null=True, blank=True)
-    billing_address  = models.ForeignKey(Address, related_name="billing_address", null=True, blank=True)
-    cart             = models.ForeignKey(Cart)
-    status           = models.CharField(max_length=120, default='created', choices=ORDER_STATUS_CHOICES)
-    shipping_total   = models.DecimalField(default=5.99, max_digits=100, decimal_places=2)
-    total            = models.DecimalField(default=0.00, max_digits=100, decimal_places=2)
-    active           = models.BooleanField(default=True)
+    billing_address = models.ForeignKey(Address, related_name="billing_address", null=True, blank=True)
+    cart = models.ForeignKey(Cart)
+    status = models.CharField(max_length=120, default='created', choices=ORDER_STATUS_CHOICES)
+    shipping_total = models.DecimalField(default=5.99, max_digits=100, decimal_places=2)
+    total = models.DecimalField(default=0.00, max_digits=100, decimal_places=2)
+    active = models.BooleanField(default=True)
 
     def __str__(self):
         return self.order_id
@@ -53,6 +59,21 @@ class Order(models.Model):
         self.save()
         return new_total
 
+    def check_done(self):
+        billing_profile = self.billing_profile
+        shipping_address = self.shipping_address
+        billing_address = self.billing_address
+        total = self.total
+        if billing_profile and shipping_address and billing_address and total > 0:
+            return True
+        return False
+
+    def mark_paid(self):
+        if self.check_done():
+            self.status = 'paid'
+            self.save()
+        return self.status
+
 
 def pre_save_create_order_id(sender, instance, *args, **kwargs):
     if not instance.order_id:
@@ -65,7 +86,7 @@ def pre_save_create_order_id(sender, instance, *args, **kwargs):
 pre_save.connect(pre_save_create_order_id, sender=Order)
 
 
-def post_save_cart_total(sender, instance, created,  *args, **kwargs):
+def post_save_cart_total(sender, instance, created, *args, **kwargs):
     if not created:
         cart_obj = instance
         cart_total = cart_obj.total
