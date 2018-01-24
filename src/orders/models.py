@@ -101,7 +101,6 @@ post_save.connect(post_save_cart_total, sender=Cart)
 
 
 def post_save_order(sender, instance, created, *args, **kwargs):
-    print('running')
     if created:
         print('updating....first')
         instance.update_total()
