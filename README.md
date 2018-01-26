@@ -24,5 +24,5 @@ Build Django powered eCommerce web application
 - [ ] Learn AJAX and Asynchronous Programing with Django and Javascript (jQuery)
 - [ ] Digital item sales and downloads
 
-## Current progress
+## Current progress:
 ![Progress bar](http://progressed.io/bar/48 "Progress bar")
