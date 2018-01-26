@@ -16,7 +16,7 @@ Build Django powered eCommerce web application
 - [x] jQuery Fast Track Section (learn the basics)
 - [ ] Build a REST API
 - [ ] Build custom analytics
-- [] Create a custom user model
+- [ ] Create a custom user model
 - [x] Guest Checkout
 - [ ] Integrate Email for notifications
 - [x] Learning how to use Signals in Django
