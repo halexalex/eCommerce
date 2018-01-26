@@ -25,5 +25,4 @@ Build Django powered eCommerce web application
 - [ ] Digital item sales and downloads
 
 ## Current progress
-![Progress bar](http://progressed.io/bar/41 "Progress bar") done
-[](http://progressed.io/bar/41)
+![Progress bar](http://progressed.io/bar/41 "Progress bar")
