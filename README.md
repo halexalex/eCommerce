@@ -12,7 +12,7 @@ Build Django powered eCommerce web application
 - [ ]Email Marketing Integration using Mailchimp
 - [ ]Going Live using the host Heroku
 - [ ]Adding a custom domain and implement HTTPs (using Let's Encrypt)
-- [x]Learn Bootstrap Version 4 basics (including Django Integration) 
+- [x]Learn Bootstrap Version 4 basics (including Django Integration)
 - [ ]jQuery Fast Track Section (learn the basics)
 - [ ]Build a REST API
 - [ ]Build custom analytics
