@@ -13,15 +13,15 @@ Build Django powered eCommerce web application
 - [x] Build an internal Search Engine
 - [x] Guest Checkout
 - [x] jQuery Fast Track Section (learn the basics)
+- [ ] Learn AJAX and Asynchronous Programing with Django and Javascript (jQuery)
+- [ ] Create a custom user model
+- [ ] Build custom analytics
 - [ ] Payment Integration using Stripe
 - [ ] Email Marketing Integration using Mailchimp
+- [ ] Integrate Email for notifications
 - [ ] Going Live using the host Heroku
 - [ ] Adding a custom domain and implement HTTPs (using Let's Encrypt)
 - [ ] Build a REST API
-- [ ] Build custom analytics
-- [ ] Create a custom user model
-- [ ] Integrate Email for notifications
-- [ ] Learn AJAX and Asynchronous Programing with Django and Javascript (jQuery)
 - [ ] Digital item sales and downloads
 
 ## Current progress:
