@@ -8,19 +8,19 @@ Build Django powered eCommerce web application
 
 - [x] Learn the ins and outs of Python's popular library Django
 - [x] Django version 1.11
+- [x] Learn Bootstrap Version 4 basics (including Django Integration)
+- [x] Learning how to use Signals in Django
+- [x] Build an internal Search Engine
+- [x] Guest Checkout
+- [x] jQuery Fast Track Section (learn the basics)
 - [ ] Payment Integration using Stripe
 - [ ] Email Marketing Integration using Mailchimp
 - [ ] Going Live using the host Heroku
 - [ ] Adding a custom domain and implement HTTPs (using Let's Encrypt)
-- [x] Learn Bootstrap Version 4 basics (including Django Integration)
-- [x] jQuery Fast Track Section (learn the basics)
 - [ ] Build a REST API
 - [ ] Build custom analytics
 - [ ] Create a custom user model
-- [x] Guest Checkout
 - [ ] Integrate Email for notifications
-- [x] Learning how to use Signals in Django
-- [x] Build an internal Search Engine
 - [ ] Learn AJAX and Asynchronous Programing with Django and Javascript (jQuery)
 - [ ] Digital item sales and downloads
 
