@@ -19,6 +19,39 @@
 
     <script>
         $(document).ready(function() {
+            // Auto Search. Auto save form data can be implemented the same way.
+            var searchForm = $(".search-form");
+            var searchInput = searchForm.find("[name='q']"); // div name='q'
+            var typingTimer;
+            var typingInterval = 500; // 0.5 seconds
+            var searchBtn = searchForm.find("[type='submit']");
+
+            searchInput.keyup(function(event) {
+                // key released
+                clearTimeout(typingTimer);
+                typingTimer = setTimeout(performSearch, typingInterval);
+            })
+
+            searchInput.keydown(function(event) {
+                // key pressed
+                clearTimeout(typingTimer);
+            })
+
+            function displaySearching() {
+                searchBtn.addClass("disabled");
+                searchBtn.html("<i class='fa fa-spin fa-spinner'></i> Searching...");
+            }
+
+            function performSearch() {
+                doSearch();
+                var query = searchInput.val();
+                setTimeout(function() {
+                window.location.href = '/search/?q=' + query;
+                }, 1000)
+            }
+
+
+            // Cart + Add Products
             var productForm = $(".form-product-ajax");
             productForm.submit(function(event) {
                 event.preventDefault();
