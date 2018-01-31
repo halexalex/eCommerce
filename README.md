@@ -13,7 +13,7 @@ Build Django powered eCommerce web application
 - [x] Build an internal Search Engine
 - [x] Guest Checkout
 - [x] jQuery Fast Track Section (learn the basics)
-- [ ] Learn AJAX and Asynchronous Programing with Django and Javascript (jQuery)
+- [x] Learn AJAX and Asynchronous Programing with Django and Javascript (jQuery)
 - [ ] Create a custom user model
 - [ ] Build custom analytics
 - [ ] Payment Integration using Stripe
@@ -25,4 +25,4 @@ Build Django powered eCommerce web application
 - [ ] Digital item sales and downloads
 
 ## Current progress:
-![Progress bar](http://progressed.io/bar/41 "Progress bar")
+![Progress bar](http://progressed.io/bar/47 "Progress bar")
