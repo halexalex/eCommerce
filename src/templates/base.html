@@ -19,6 +19,64 @@
 
     <script>
         $(document).ready(function() {
+            // Contact Form Handler
+            var contactForm = $(".contact-form");
+            var contactFormMethod = contactForm.attr("method");
+            var contactFormEndpoint = contactForm.attr("action");
+
+            function displaySubmitting(submitBtn, defaulText, doSubmit) {
+                if (doSubmit) {
+                    submitBtn.addClass("disabled");
+                    submitBtn.html("<i class='fa fa-spin fa-spinner'></i> Sending...");
+                } else {
+                    submitBtn.removeClass("disabled");
+                    submitBtn.html(defaulText);
+                }
+            }
+
+            contactForm.submit(function(event) {
+                event.preventDefault();
+                var contactFormSubmitBtn = contactForm.find("[type='submit']");
+                var contactFormSubmitBtnTxt = contactFormSubmitBtn.text();
+                var contactFormData = contactForm.serialize();
+                var thisForm = $(this);
+                displaySubmitting(contactFormSubmitBtn, "", true);
+                $.ajax({
+                    method: contactFormMethod,
+                    url: contactFormEndpoint,
+                    data: contactFormData,
+                    success: function(data) {
+                        contactForm[0].reset();
+                        $.alert({
+                            title: "Success!",
+                            content: data.message,
+                            theme: "modern"
+                        });
+                        setTimeout(function() {
+                            displaySubmitting(contactFormSubmitBtn, contactFormSubmitBtnTxt, false);
+                        }, 500);
+                    },
+                    error: function(error) {
+                        console.log(error.responseJSON);
+                        var jsonData = error.responseJSON;
+                        var msg = "";
+
+                        $.each(jsonData, function(key, value) {
+                            msg += key + ": " + value[0].message + "<br/>";
+                        });
+
+                        $.alert({
+                            title: "Oops!",
+                            content: msg,
+                            theme: "modern"
+                        });
+                        setTimeout(function() {
+                            displaySubmitting(contactFormSubmitBtn, contactFormSubmitBtnTxt, false);
+                        }, 500);
+                    }
+                });
+            });
+
             // Auto Search. Auto save form data can be implemented the same way.
             var searchForm = $(".search-form");
             var searchInput = searchForm.find("[name='q']"); // div name='q'
@@ -30,12 +88,12 @@
                 // key released
                 clearTimeout(typingTimer);
                 typingTimer = setTimeout(performSearch, typingInterval);
-            })
+            });
 
             searchInput.keydown(function(event) {
                 // key pressed
                 clearTimeout(typingTimer);
-            })
+            });
 
             function displaySearching() {
                 searchBtn.addClass("disabled");
@@ -43,11 +101,11 @@
             }
 
             function performSearch() {
-                doSearch();
+                displaySearching();
                 var query = searchInput.val();
                 setTimeout(function() {
                 window.location.href = '/search/?q=' + query;
-                }, 1000)
+            }, 1000);
             }
 
 
@@ -90,8 +148,8 @@
                             theme: "modern"
                         });
                     }
-                })
-            })
+                });
+            });
 
             function refreshCart() {
                 console.log("in current cart");
@@ -114,7 +172,7 @@
                             i = data.products.length;
 
                             $.each(data.products, function(index, value) {
-                                console.log(value)
+                                console.log(value);
                                 var newCartItemRemove = hiddenCartItemRemoveForm.clone();
                                 newCartItemRemove.css("display", "block");
                                 // newCartItemRemove.removeClass("hidden-class")
@@ -124,7 +182,7 @@
                                     value.name + "" + "</a>" + newCartItemRemove.html() +
                                     "</td><td>" + value.price + "</td></tr>");
                                 i--;
-                            })
+                            });
                             cartBody.find(".cart-subtotal").text(data.subtotal);
                             cartBody.find(".cart-total").text(data.total);
                         } else {
@@ -138,10 +196,10 @@
                             theme: "modern"
                         });
                     }
-                })
+                });
             }
 
-        })
+        });
     </script>
 
 </body>
