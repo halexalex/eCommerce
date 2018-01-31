@@ -84,8 +84,11 @@
                         }
                     },
                     error: function(errorData) {
-                        console.log("error");
-                        console.log(errorData);
+                        $.alert({
+                            title: "Oops!",
+                            content: "An error occurred",
+                            theme: "modern"
+                        });
                     }
                 })
             })
@@ -129,8 +132,11 @@
                         }
                     },
                     error: function(errorData) {
-                        console.log("error");
-                        console.log(errorData);
+                        $.alert({
+                            title: "Oops!",
+                            content: "An error occurred",
+                            theme: "modern"
+                        });
                     }
                 })
             }
