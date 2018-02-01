@@ -35,4 +35,3 @@ class ContactForm(forms.Form):
 
     # def clean_content(self):
     #     raise forms.ValidationError("Content is wrong.")
-
