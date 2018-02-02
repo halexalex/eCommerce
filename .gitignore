@@ -5,7 +5,6 @@ credentials.py
 __pycache__
 .ropeproject
 .idea
-.DS_Store
 *~
 *.pyc
 *.bat
