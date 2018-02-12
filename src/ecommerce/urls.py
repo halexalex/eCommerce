@@ -5,7 +5,7 @@ from django.contrib import admin
 from django.contrib.auth.views import LogoutView
 from django.views.generic import TemplateView
 
-from accounts.views import RegisterView, guest_register_view, LoginView
+from accounts.views import LoginView, RegisterView, guest_register_view
 from addresses.views import (checkout_address_create_view,
                              checkout_address_reuse_view)
 from carts.views import cart_detail_api_view
