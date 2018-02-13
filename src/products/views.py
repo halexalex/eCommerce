@@ -2,6 +2,7 @@ from django.http import Http404
 from django.shortcuts import get_object_or_404, render
 from django.views.generic import DetailView, ListView
 
+from analytics.signals import object_viewed_signal
 from carts.models import Cart
 
 from .models import Product
@@ -64,6 +65,8 @@ class ProductDetailSlugView(DetailView):
             instance = queryset.first()
         except:
             raise Http404('Uhhhmmm')
+
+        # object_viewed_signal.send(instance.__class__, instance=instance, request=request)
         return instance
 
 
