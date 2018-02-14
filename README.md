@@ -15,7 +15,7 @@ Build Django powered eCommerce web application
 - [x] jQuery Fast Track Section (learn the basics)
 - [x] Learn AJAX and Asynchronous Programing with Django and Javascript (jQuery)
 - [x] Create a custom user model
-- [ ] Build custom analytics
+- [x] Build custom analytics
 - [ ] Payment Integration using Stripe
 - [ ] Email Marketing Integration using Mailchimp
 - [ ] Integrate Email for notifications
@@ -25,4 +25,4 @@ Build Django powered eCommerce web application
 - [ ] Digital item sales and downloads
 
 ## Current progress:
-![Progress bar](http://progressed.io/bar/52 "Progress bar")
+![Progress bar](http://progressed.io/bar/59 "Progress bar")
