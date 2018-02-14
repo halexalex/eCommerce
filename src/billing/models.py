@@ -7,6 +7,7 @@ from accounts.models import GuestEmail
 
 User = settings.AUTH_USER_MODEL
 stripe.api_key = settings.STRIPE_SECRET_KEY
+STRIPE_PUB_KEY = settings.STRIPE_PUB_KEY
 
 
 class BillingProfileManager(models.Manager):
