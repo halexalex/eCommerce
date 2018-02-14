@@ -2,9 +2,12 @@ from django.conf import settings
 from django.db import models
 from django.db.models.signals import post_save
 
+import stripe
 from accounts.models import GuestEmail
 
 User = settings.AUTH_USER_MODEL
+
+stripe.api_key = settings.STRIPE_SECRET_KEY
 
 
 class BillingProfileManager(models.Manager):

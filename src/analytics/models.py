@@ -3,9 +3,10 @@ from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.sessions.models import Session
 from django.db import models
-from django.db.models.signals import pre_save, post_save
+from django.db.models.signals import post_save, pre_save
 
 from accounts.signals import user_logged_in
+
 from .signals import object_viewed_signal
 from .utils import get_client_ip
 
