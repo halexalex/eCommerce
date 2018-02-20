@@ -8,7 +8,7 @@ from django.views.generic import TemplateView
 from accounts.views import LoginView, RegisterView, guest_register_view
 from addresses.views import (checkout_address_create_view,
                              checkout_address_reuse_view)
-from billing.views import payment_method_view, payment_method_create_view
+from billing.views import payment_method_create_view, payment_method_view
 from carts.views import cart_detail_api_view
 
 from .views import about_page, contact_page, home_page
