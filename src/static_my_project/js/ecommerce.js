@@ -1,20 +1,21 @@
-$(document).ready(function() {
+$(document).ready(function () {
+    "use strict";
     // Contact Form Handler
     var contactForm = $(".contact-form");
     var contactFormMethod = contactForm.attr("method");
     var contactFormEndpoint = contactForm.attr("action");
 
-    function displaySubmitting(submitBtn, defaulText, doSubmit) {
+    function displaySubmitting(submitBtn, defaultText, doSubmit) {
         if (doSubmit) {
             submitBtn.addClass("disabled");
             submitBtn.html("<i class='fa fa-spin fa-spinner'></i> Sending...");
         } else {
             submitBtn.removeClass("disabled");
-            submitBtn.html(defaulText);
+            submitBtn.html(defaultText);
         }
     }
 
-    contactForm.submit(function(event) {
+    contactForm.submit(function (event) {
         event.preventDefault();
         var contactFormSubmitBtn = contactForm.find("[type='submit']");
         var contactFormSubmitBtnTxt = contactFormSubmitBtn.text();
@@ -84,7 +85,7 @@ $(document).ready(function() {
         displaySearching();
         var query = searchInput.val();
         setTimeout(function() {
-        window.location.href = '/search/?q=' + query;
+        window.location.href = "/search/?q=" + query;
     }, 1000);
     }
 
@@ -138,7 +139,7 @@ $(document).ready(function() {
         var productRows = cartBody.find(".cart-product");
         var currentUrl = window.location.href;
 
-        var refreshCartUrl = '/api/cart/';
+        var refreshCartUrl = "/api/cart/";
         var refreshCartMethod = "GET";
         var data = {};
         $.ajax({
