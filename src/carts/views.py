@@ -16,7 +16,6 @@ STRIPE_SECRET_KEY = getattr(settings, "STRIPE_SECRET_KEY")
 STRIPE_PUB_KEY = getattr(settings, "STRIPE_PUB_KEY")
 
 
-
 def cart_detail_api_view(request):
     cart_obj, new_obj = Cart.objects.new_or_get(request)
     products = [{
@@ -101,6 +100,11 @@ def checkout_home(request):
                 order_obj.mark_paid()
                 request.session['cart_items'] = 0
                 del request.session['cart_id']
+                if not billing_profile.user:
+                    """
+                    Is this the best spot?
+                    """
+                    billing_profile.set_cards_inactive()
                 return redirect('cart:success')
             else:
                 print(charge_msg)

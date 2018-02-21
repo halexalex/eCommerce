@@ -9,7 +9,6 @@ from .models import BillingProfile, Card
 
 STRIPE_SECRET_KEY = getattr(settings, "STRIPE_SECRET_KEY")
 STRIPE_PUB_KEY = getattr(settings, "STRIPE_PUB_KEY")
-stripe.api_key = STRIPE_SECRET_KEY
 
 
 def payment_method_view(request):
