@@ -6,8 +6,9 @@ import stripe
 from accounts.models import GuestEmail
 
 User = settings.AUTH_USER_MODEL
-stripe.api_key = settings.STRIPE_SECRET_KEY
-STRIPE_PUB_KEY = settings.STRIPE_PUB_KEY
+STRIPE_SECRET_KEY = getattr(settings, "STRIPE_SECRET_KEY")
+STRIPE_PUB_KEY = getattr(settings, "STRIPE_PUB_KEY")
+stripe.api_key = STRIPE_SECRET_KEY
 
 
 class BillingProfileManager(models.Manager):
@@ -41,6 +42,21 @@ class BillingProfile(models.Model):
 
     def charge(self, order_obj, card=None):
         return Charge.objects.do(self, order_obj, card)
+
+    def get_cards(self):
+        return self.card_set.all()
+
+    @property
+    def has_card(self):
+        card_qs = self.get_cards()
+        return card_qs.exists()  # True of False
+
+    @property
+    def default_card(self):
+        default_cards = self.get_cards().filter(default=True)
+        if default_cards.exists():
+            return default_cards.first()
+        return None
 
     def __str__(self):
         return self.email
