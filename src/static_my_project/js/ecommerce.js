@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    "use strict";
+
     // Contact Form Handler
     var contactForm = $(".contact-form");
     var contactFormMethod = contactForm.attr("method");
@@ -26,23 +26,23 @@ $(document).ready(function () {
             method: contactFormMethod,
             url: contactFormEndpoint,
             data: contactFormData,
-            success: function(data) {
+            success: function (data) {
                 contactForm[0].reset();
                 $.alert({
                     title: "Success!",
                     content: data.message,
                     theme: "modern"
                 });
-                setTimeout(function() {
+                setTimeout(function () {
                     displaySubmitting(contactFormSubmitBtn, contactFormSubmitBtnTxt, false);
                 }, 500);
             },
-            error: function(error) {
+            error: function (error) {
                 console.log(error.responseJSON);
                 var jsonData = error.responseJSON;
                 var msg = "";
 
-                $.each(jsonData, function(key, value) {
+                $.each(jsonData, function (key, value) {
                     msg += key + ": " + value[0].message + "<br/>";
                 });
 
@@ -51,7 +51,7 @@ $(document).ready(function () {
                     content: msg,
                     theme: "modern"
                 });
-                setTimeout(function() {
+                setTimeout(function () {
                     displaySubmitting(contactFormSubmitBtn, contactFormSubmitBtnTxt, false);
                 }, 500);
             }
@@ -65,13 +65,13 @@ $(document).ready(function () {
     var typingInterval = 500; // 0.5 seconds
     var searchBtn = searchForm.find("[type='submit']");
 
-    searchInput.keyup(function(event) {
+    searchInput.keyup(function (event) {
         // key released
         clearTimeout(typingTimer);
         typingTimer = setTimeout(performSearch, typingInterval);
     });
 
-    searchInput.keydown(function(event) {
+    searchInput.keydown(function (event) {
         // key pressed
         clearTimeout(typingTimer);
     });
@@ -84,15 +84,15 @@ $(document).ready(function () {
     function performSearch() {
         displaySearching();
         var query = searchInput.val();
-        setTimeout(function() {
-        window.location.href = "/search/?q=" + query;
-    }, 1000);
+        setTimeout(function () {
+            window.location.href = "/search/?q=" + query;
+        }, 1000);
     }
 
 
     // Cart + Add Products
     var productForm = $(".form-product-ajax");
-    productForm.submit(function(event) {
+    productForm.submit(function (event) {
         event.preventDefault();
         var thisForm = $(this);
         var actionEndpoint = thisForm.attr("data-endpoint");
@@ -103,7 +103,7 @@ $(document).ready(function () {
             url: actionEndpoint,
             method: httpMethod,
             data: formData,
-            success: function(data) {
+            success: function (data) {
                 var submitSpan = thisForm.find(".submit-span");
                 if (data.added) {
                     submitSpan.html(
@@ -122,7 +122,7 @@ $(document).ready(function () {
                     refreshCart();
                 }
             },
-            error: function(errorData) {
+            error: function (errorData) {
                 $.alert({
                     title: "Oops!",
                     content: "An error occurred",
@@ -146,13 +146,13 @@ $(document).ready(function () {
             url: refreshCartUrl,
             method: refreshCartMethod,
             data: data,
-            success: function(data) {
+            success: function (data) {
                 var hiddenCartItemRemoveForm = $(".cart-item-remove-form");
                 if (data.products.length > 0) {
                     productRows.html("");
                     i = data.products.length;
 
-                    $.each(data.products, function(index, value) {
+                    $.each(data.products, function (index, value) {
                         console.log(value);
                         var newCartItemRemove = hiddenCartItemRemoveForm.clone();
                         newCartItemRemove.css("display", "block");
@@ -170,7 +170,7 @@ $(document).ready(function () {
                     window.location.href = currentUrl;
                 }
             },
-            error: function(errorData) {
+            error: function (errorData) {
                 $.alert({
                     title: "Oops!",
                     content: "An error occurred",
