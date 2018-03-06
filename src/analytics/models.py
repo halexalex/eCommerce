@@ -17,7 +17,7 @@ FORCE_INACTIVE_USER_ENDSESSION = getattr(settings, 'FORCE_INACTIVE_USER_ENDSESSI
 
 
 class ObjectViewed(models.Model):
-    user           = models.ForeignKey(User, blank=True, null=True)  # User instance
+    user           = models.ForeignKey(User, blank=True, null=True)  # User instance instance.id
     ip_address     = models.CharField(max_length=220, blank=True, null=True)  # IP Field
     content_type   = models.ForeignKey(ContentType)  # User, Product, Order, Cart, Address
     object_id      = models.PositiveIntegerField()  # User id, Product id, Order id
@@ -35,8 +35,11 @@ class ObjectViewed(models.Model):
 
 def object_viewed_receiver(sender, instance, request, *args, **kwargs):
     c_type = ContentType.objects.get_for_model(sender)  # instance.__class__
+    user = None
+    if request.user.is_authenticated():
+        user = request.user
     new_view_obj = ObjectViewed.objects.create(
-        user=request.user,
+        user=user,
         content_type=c_type,
         object_id=instance.id,
         ip_address=get_client_ip(request)  # questionable

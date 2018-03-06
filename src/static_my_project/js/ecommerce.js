@@ -118,7 +118,7 @@ $(document).ready(function () {
                 navbarCount.text(data.cartItemCount);
                 var currentPath = window.location.href;
 
-                if (currentPath.indexOf("cart") != -1) {
+                if (currentPath.indexOf("cart") !== -1) {
                     refreshCart();
                 }
             },
