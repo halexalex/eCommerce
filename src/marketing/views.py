@@ -5,6 +5,7 @@ from django.views.generic import UpdateView, View
 from django.shortcuts import redirect
 
 from .forms import MarketingPreferenceForm
+from .mixins import CsrfExemptMixin
 from .models import MarketingPreference
 from .utils import MailChimp
 
@@ -34,28 +35,7 @@ class MarketingPreferenceUpdateView(SuccessMessageMixin, UpdateView):
         return obj
 
 
-"""
-POST method
-data[id]: c5039f8999
-data[merges][FNAME]:
-data[web_id]: 166172777
-type: unsubscribe
-data[merges][PHONE]:
-data[list_id]: a914bf1dd4
-data[reason]: manual
-data[email_type]: html
-fired_at: 2018-03-15 12:38:43
-data[action]: unsub
-data[email]: yeahboi@gmail.com
-data[merges][ADDRESS]:
-data[merges][BIRTHDAY]:
-data[ip_opt]: 37.204.229.54
-data[merges][EMAIL]: yeahboi@gmail.com
-data[merges][LNAME]:
-"""
-
-
-class MailChimpWebhookView(View):  # HTTP GET -- def get()
+class MailChimpWebhookView(CsrfExemptMixin, View):  # HTTP GET -- def get()
     def post(self, request, *args, **kwargs):
         data = request.POST
         list_id = data.get('data[list_id]')
@@ -80,27 +60,3 @@ class MailChimpWebhookView(View):  # HTTP GET -- def get()
 
         return HttpResponse('Thank you!', status=200)
 
-
-# def mailchimp_webhook_view(request):
-#     data = request.POST
-#     list_id = data.get('data[list_id]')
-#     if str(list_id) == str(MAILCHIMP_EMAIL_LIST_ID):
-#         hook_type = data.get('type')
-#         email = data.get('data[email]')
-#         responsub_status, response = MailChimp().check_subscription_status(email)
-#         sub_status = response['status']
-#         is_subbed = None
-#         mailchimp_subbed = None
-#         if sub_status == 'subscribed':
-#             is_subbed, mailchimp_subbed = True, True
-#         elif sub_status == 'unsubscribed':
-#             is_subbed, mailchimp_subbed = False, False
-#         if is_subbed is not None and mailchimp_subbed is not None:
-#             qs = MarketingPreference.objects.filter(user__email__iexact=email)
-#             if qs.exists():
-#                 qs.update(subscribed=is_subbed,
-#                           mailchimp_subscribed=mailchimp_subbed,
-#                           mailchimp_msg=str(data)
-#                           )
-#
-#     return HttpResponse('Thank you!', status=200)
