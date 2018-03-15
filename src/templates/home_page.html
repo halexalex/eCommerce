@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 {% extends 'base.html' %}
 
 {% load static %}
@@ -8,7 +7,8 @@
 {% endblock base_head %}
 
 {% block content %}
-<div class='text-center'>
+
+    <div class='text-center'>
         <h1>{{ title }}</h1>
         <h1>Hello, world we`re working</h1>
     </div>
@@ -19,12 +19,12 @@
         </div>
     </div>
     {% if request.user.is_authenticated %}
-    <div class="row">
-        <div class="col">
-            <h1>Premium content</h1>
-            <p>{{ premium_content }}</p>
+        <div class="row">
+            <div class="col">
+                <h1>Premium content</h1>
+                <p>{{ premium_content }}</p>
+            </div>
         </div>
-    </div>
     {% endif %}
 
 {% endblock content %}
