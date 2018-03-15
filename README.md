@@ -16,13 +16,13 @@ Build Django powered eCommerce web application
 - [x] Learn AJAX and Asynchronous Programing with Django and Javascript (jQuery)
 - [x] Create a custom user model
 - [x] Build custom analytics
-- [ ] Payment Integration using [Stripe](https://stripe.com/)
-- [ ] Email Marketing Integration using Mailchimp
-- [ ] Integrate Email for notifications
+- [x] Payment Integration using [Stripe](https://stripe.com/)
+- [x] Email Marketing Integration using Mailchimp
 - [ ] Going Live using the host Heroku
+- [ ] Integrate Email for notifications
 - [ ] Adding a custom domain and implement HTTPs (using Let's Encrypt)
 - [ ] Build a REST API
 - [ ] Digital item sales and downloads
 
 ## Current progress:
-![Progress bar](http://progressed.io/bar/59 "Progress bar")
+![Progress bar](http://progressed.io/bar/71 "Progress bar")
