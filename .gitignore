@@ -8,4 +8,4 @@ __pycache__
 credentials.py
 db.sqlite3
 media/*
-django/ecommerce/src/ecommerce/settings/*
+src/ecommerce/settings/
