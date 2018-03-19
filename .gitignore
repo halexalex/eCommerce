@@ -10,5 +10,4 @@ db.sqlite3
 media/*
 src/ecommerce/settings/base.py
 src/ecommerce/settings/local.py
-src/ecommerce/settings/local_alex.py
 src/ecommerce/settings/production.py
