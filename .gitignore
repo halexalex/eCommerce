@@ -8,4 +8,6 @@ __pycache__
 credentials.py
 db.sqlite3
 media/*
-src/ecommerce/settings/
+src/ecommerce/settings/base.py
+src/ecommerce/settings/local.py
+src/ecommerce/settings/production.py
