@@ -14,7 +14,7 @@ notes/email-activation.py
 src/ecommerce/aws/ignore2.py
 src/ecommerce/settings/base.py
 src/ecommerce/settings/local.py
-src/ecommerce/settings/production.py
+
 
 # Virtualenv related
 bin/
