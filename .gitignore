@@ -1,5 +1,4 @@
 # Extra stuff
-
 *.bat
 *.jshintrc
 *.pyc
@@ -12,9 +11,6 @@ fasttracktojquery/
 media/*
 notes/email-activation.py
 src/ecommerce/aws/ignore2.py
-src/ecommerce/settings/base.py
-src/ecommerce/settings/local.py
-
 
 # Virtualenv related
 bin/
