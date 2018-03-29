@@ -6,7 +6,6 @@
 .env
 .idea
 credentials.py
-db.sqlite3
 fasttracktojquery/
 media/*
 notes/email-activation.py
