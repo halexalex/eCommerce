@@ -36,6 +36,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    # Third party
+    'storages',
+
     # Our apps
     'accounts',
     'addresses',
@@ -144,9 +147,10 @@ STATICFILES_DIRS = [
 
 STATIC_ROOT = os.path.join(BASE_DIR, "static_cdn", "static_root")
 
-
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, "static_cdn", "media_root")
+
+from ecommerce.aws.conf import *
 
 # Let`s Encrypt ssl/tls https
 
