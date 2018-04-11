@@ -27,4 +27,5 @@ Build Django powered eCommerce web application
 
 ## Current progress:
 [Already live on Heroku!](https://nameless-waters-84605.herokuapp.com/)
+
 ![Progress bar](http://progressed.io/bar/83 "Progress bar")
