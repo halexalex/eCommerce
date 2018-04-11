@@ -39,11 +39,11 @@ class UserManager(BaseUserManager):
 
 
 class User(AbstractBaseUser):  # Custom user class
-    email     = models.EmailField(max_length=255, unique=True)
+    email = models.EmailField(max_length=255, unique=True)
     full_name = models.CharField(max_length=255, blank=True, null=True)
-    active    = models.BooleanField(default=True)
-    staff     = models.BooleanField(default=False)
-    admin     = models.BooleanField(default=False)
+    active = models.BooleanField(default=True)
+    staff = models.BooleanField(default=False)
+    admin = models.BooleanField(default=False)
     timestamp = models.DateTimeField(auto_now_add=True)
     # confirm   = models.BooleanField(default=False)
     # confirmed_date = models.DateTimeField()
@@ -89,9 +89,9 @@ class User(AbstractBaseUser):  # Custom user class
 
 
 class GuestEmail(models.Model):
-    email     = models.EmailField()
-    active    = models.BooleanField(default=True)
-    update    = models.DateTimeField(auto_now_add=True)
+    email = models.EmailField()
+    active = models.BooleanField(default=True)
+    update = models.DateTimeField(auto_now_add=True)
     timestamp = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

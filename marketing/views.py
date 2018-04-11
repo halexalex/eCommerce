@@ -1,8 +1,8 @@
 from django.conf import settings
 from django.contrib.messages.views import SuccessMessageMixin
 from django.http import HttpResponse
-from django.views.generic import UpdateView, View
 from django.shortcuts import redirect
+from django.views.generic import UpdateView, View
 
 from .forms import MarketingPreferenceForm
 from .mixins import CsrfExemptMixin
@@ -59,4 +59,3 @@ class MailChimpWebhookView(CsrfExemptMixin, View):  # HTTP GET -- def get()
                               )
 
         return HttpResponse('Thank you!', status=200)
-

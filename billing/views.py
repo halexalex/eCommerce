@@ -3,8 +3,6 @@ from django.http import HttpResponse, JsonResponse
 from django.shortcuts import redirect, render
 from django.utils.http import is_safe_url
 
-import stripe
-
 from .models import BillingProfile, Card
 
 STRIPE_SECRET_KEY = getattr(settings, "STRIPE_SECRET_KEY")

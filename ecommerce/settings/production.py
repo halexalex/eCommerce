@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 
 import os
 
+import dj_database_url
+
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
@@ -106,7 +108,6 @@ DATABASES = {
     }
 }
 
-import dj_database_url
 
 db_from_env = dj_database_url.config()  # postgreSQL Database in heroku
 DATABASES['default'].update(db_from_env)
@@ -156,8 +157,6 @@ STATIC_ROOT = os.path.join(BASE_DIR, "static_cdn", "static_root")
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, "static_cdn", "media_root")
-
-from ecommerce.aws.conf import *
 
 # Let`s Encrypt ssl/tls https
 

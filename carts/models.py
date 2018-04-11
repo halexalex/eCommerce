@@ -2,7 +2,7 @@ from decimal import Decimal
 
 from django.conf import settings
 from django.db import models
-from django.db.models.signals import m2m_changed, post_save, pre_save
+from django.db.models.signals import m2m_changed, pre_save
 
 from products.models import Product
 
@@ -35,14 +35,14 @@ class CartManager(models.Manager):
 
 
 class Cart(models.Model):
-    user      = models.ForeignKey(User, null=True, blank=True)
-    products  = models.ManyToManyField(Product,  blank=True)
-    total     = models.DecimalField(default=0.00, max_digits=100, decimal_places=2)
-    subtotal  = models.DecimalField(default=0.00, max_digits=100, decimal_places=2)
-    updated   = models.DateTimeField(auto_now=True)
+    user = models.ForeignKey(User, null=True, blank=True)
+    products = models.ManyToManyField(Product, blank=True)
+    total = models.DecimalField(default=0.00, max_digits=100, decimal_places=2)
+    subtotal = models.DecimalField(default=0.00, max_digits=100, decimal_places=2)
+    updated = models.DateTimeField(auto_now=True)
     timestamp = models.DateTimeField(auto_now_add=True)
 
-    objects   = CartManager()
+    objects = CartManager()
 
     def __str__(self):
         return str(self.id)

@@ -50,11 +50,11 @@ class UserAdminChangeForm(forms.ModelForm):
 
 
 class GuestForm(forms.Form):
-    email    = forms.EmailField()
+    email = forms.EmailField()
 
 
 class LoginForm(forms.Form):
-    email    = forms.EmailField(label='Email')
+    email = forms.EmailField(label='Email')
     password = forms.CharField(widget=forms.PasswordInput)
 
 

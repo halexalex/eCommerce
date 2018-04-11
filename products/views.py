@@ -85,7 +85,6 @@ class ProductDetailView(ObjectViewedMixin, DetailView):
 
 
 def product_detail_view(request, pk=None, *args, **kwargs):
-
     instance = Product.objects.get_by_id(pk)
     if instance is None:
         raise Http404

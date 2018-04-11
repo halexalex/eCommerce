@@ -1,9 +1,10 @@
-$(document).ready(function() {
+$(document).ready(function () {
     "use strict";
+
     // Using jQuery
     function getCookie(name) {
         var cookieValue = null;
-        if (document.cookie && document.cookie !=="") {
+        if (document.cookie && document.cookie !== "") {
             var cookies = document.cookie.split(";");
             for (var i = 0; i < cookies.length; i++) {
                 var cookie = jQuery.trim(cookies[i]);
@@ -16,14 +17,16 @@ $(document).ready(function() {
         }
         return cookieValue;
     }
+
     var csrftoken = getCookie("csrftoken");
 
     function csrfSafeMethod(method) {
         // these HTTP methods do not require CSRF protection
         return (/^(GET|HEAD|OPTIONS|TRACE)$/.test(method));
     }
+
     $.ajaxSetup({
-        beforeSend: function(xhr, settings) {
+        beforeSend: function (xhr, settings) {
             if (!csrfSafeMethod(settings.type) && !this.crossDomain) {
                 xhr.setRequestHeader("X-CSRFToken", csrftoken);
             }

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 {% extends 'base.html' %}
-    {% block content %}
+{% block content %}
     <div class="row mb-3">
         {% if query %}
             <div class="col-12">
@@ -18,18 +18,18 @@
     </div>
     <div class="row">
         {% for object in object_list %}
-        <div class="col">
-            {% include 'products/snippets/card.html' with instance=object %}
+            <div class="col">
+                {% include 'products/snippets/card.html' with instance=object %}
 
-            {% if forloop.counter|divisibleby:3 %}
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-12">
-            <hr/>
-        </div>
-        {% else %}
-    </div>
-    {% endif %}
-    {% endfor %}
+                {% if forloop.counter|divisibleby:3 %}
+                    </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <hr/>
+                        </div>
+                        {% else %}
+                    </div>
+                {% endif %}
+        {% endfor %}
 {% endblock content %}

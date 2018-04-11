@@ -3,7 +3,7 @@ from django.contrib.contenttypes.fields import GenericForeignKey
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.sessions.models import Session
 from django.db import models
-from django.db.models.signals import post_save, pre_save
+from django.db.models.signals import post_save
 
 from accounts.signals import user_logged_in
 
@@ -17,12 +17,12 @@ FORCE_INACTIVE_USER_ENDSESSION = getattr(settings, 'FORCE_INACTIVE_USER_ENDSESSI
 
 
 class ObjectViewed(models.Model):
-    user           = models.ForeignKey(User, blank=True, null=True)  # User instance instance.id
-    ip_address     = models.CharField(max_length=220, blank=True, null=True)  # IP Field
-    content_type   = models.ForeignKey(ContentType)  # User, Product, Order, Cart, Address
-    object_id      = models.PositiveIntegerField()  # User id, Product id, Order id
+    user = models.ForeignKey(User, blank=True, null=True)  # User instance instance.id
+    ip_address = models.CharField(max_length=220, blank=True, null=True)  # IP Field
+    content_type = models.ForeignKey(ContentType)  # User, Product, Order, Cart, Address
+    object_id = models.PositiveIntegerField()  # User id, Product id, Order id
     content_object = GenericForeignKey('content_type', 'object_id')  # Product instance
-    timestamp      = models.DateTimeField(auto_now_add=True)
+    timestamp = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return f'{self.content_object} viewed on {self.timestamp}'
@@ -50,12 +50,12 @@ object_viewed_signal.connect(object_viewed_receiver)
 
 
 class UserSession(models.Model):
-    user        = models.ForeignKey(User, blank=True, null=True)
-    ip_address  = models.CharField(max_length=220, blank=True, null=True)
+    user = models.ForeignKey(User, blank=True, null=True)
+    ip_address = models.CharField(max_length=220, blank=True, null=True)
     session_key = models.CharField(max_length=100, blank=True, null=True)  # min 50
-    timestamp   = models.DateTimeField(auto_now_add=True)
-    active      = models.BooleanField(default=True)
-    ended       = models.BooleanField(default=False)
+    timestamp = models.DateTimeField(auto_now_add=True)
+    active = models.BooleanField(default=True)
+    ended = models.BooleanField(default=False)
 
     def end_session(self):
         session_key = self.session_key

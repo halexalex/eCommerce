@@ -1,4 +1,4 @@
-from django.shortcuts import redirect, render
+from django.shortcuts import redirect
 from django.utils.http import is_safe_url
 
 from billing.models import BillingProfile

@@ -7,7 +7,6 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('billing', '0004_billingprofile_customer_id'),
     ]
@@ -23,7 +22,8 @@ class Migration(migrations.Migration):
                 ('exp_month', models.IntegerField(blank=True, null=True)),
                 ('exp_year', models.IntegerField(blank=True, null=True)),
                 ('last4', models.CharField(blank=True, max_length=4, null=True)),
-                ('billing_profile', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='billing.BillingProfile')),
+                ('billing_profile',
+                 models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='billing.BillingProfile')),
             ],
         ),
     ]

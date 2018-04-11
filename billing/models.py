@@ -1,7 +1,7 @@
 from django.conf import settings
+from django.core.urlresolvers import reverse
 from django.db import models
 from django.db.models.signals import post_save, pre_save
-from django.core.urlresolvers import reverse
 
 import stripe
 from accounts.models import GuestEmail
@@ -32,11 +32,11 @@ class BillingProfileManager(models.Manager):
 
 
 class BillingProfile(models.Model):
-    user        = models.OneToOneField(User, null=True, blank=True)
-    email       = models.EmailField(unique=True)
-    active      = models.BooleanField(default=True)
-    update      = models.DateTimeField(auto_now_add=True)
-    timestamp   = models.DateTimeField(auto_now_add=True)
+    user = models.OneToOneField(User, null=True, blank=True)
+    email = models.EmailField(unique=True)
+    active = models.BooleanField(default=True)
+    update = models.DateTimeField(auto_now_add=True)
+    timestamp = models.DateTimeField(auto_now_add=True)
     customer_id = models.CharField(max_length=120, null=True, blank=True)
 
     objects = BillingProfileManager()
@@ -116,15 +116,15 @@ class CardManager(models.Manager):
 
 class Card(models.Model):
     billing_profile = models.ForeignKey(BillingProfile)
-    stripe_id       = models.CharField(max_length=120)
-    brand           = models.CharField(max_length=120, null=True, blank=True)
-    country         = models.CharField(max_length=20, null=True, blank=True)
-    exp_month       = models.IntegerField(null=True, blank=True)
-    exp_year        = models.IntegerField(null=True, blank=True)
-    last4           = models.CharField(max_length=4, null=True, blank=True)
-    default         = models.BooleanField(default=True)
-    active          = models.BooleanField(default=True)
-    timestamp       = models.DateTimeField(auto_now_add=True)
+    stripe_id = models.CharField(max_length=120)
+    brand = models.CharField(max_length=120, null=True, blank=True)
+    country = models.CharField(max_length=20, null=True, blank=True)
+    exp_month = models.IntegerField(null=True, blank=True)
+    exp_year = models.IntegerField(null=True, blank=True)
+    last4 = models.CharField(max_length=4, null=True, blank=True)
+    default = models.BooleanField(default=True)
+    active = models.BooleanField(default=True)
+    timestamp = models.DateTimeField(auto_now_add=True)
 
     objects = CardManager()
 
@@ -177,12 +177,12 @@ class ChargeManager(models.Manager):
 
 class Charge(models.Model):
     billing_profile = models.ForeignKey(BillingProfile)
-    stripe_id       = models.CharField(max_length=120)
-    paid            = models.BooleanField(default=False)
-    refunded        = models.BooleanField(default=False)
-    outcome         = models.TextField(null=True, blank=True)
-    outcome_type    = models.CharField(max_length=120, null=True, blank=True)
-    seller_message  = models.CharField(max_length=120, null=True, blank=True)
-    risk_level      = models.CharField(max_length=120, null=True, blank=True)
+    stripe_id = models.CharField(max_length=120)
+    paid = models.BooleanField(default=False)
+    refunded = models.BooleanField(default=False)
+    outcome = models.TextField(null=True, blank=True)
+    outcome_type = models.CharField(max_length=120, null=True, blank=True)
+    seller_message = models.CharField(max_length=120, null=True, blank=True)
+    risk_level = models.CharField(max_length=120, null=True, blank=True)
 
     objects = ChargeManager()

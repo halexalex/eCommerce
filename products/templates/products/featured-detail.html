@@ -6,11 +6,11 @@
 </head>
 <body>
 
-    {{ object.title }} <br>
-    {{ object.description }} <br>
-    {% if object.image %}
-        <img src="{{ object.image.url }}" alt="" class="img-fluid">
-    {% endif %}
+{{ object.title }} <br>
+{{ object.description }} <br>
+{% if object.image %}
+    <img src="{{ object.image.url }}" alt="" class="img-fluid">
+{% endif %}
 
 </body>
 </html>
