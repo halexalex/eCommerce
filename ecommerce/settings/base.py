@@ -70,12 +70,12 @@ AUTH_USER_MODEL = 'accounts.User'  # changes the built in user model to ours
 FORCE_SESSION_TO_ONE = False
 FORCE_INACTIVE_USER_ENDSESSION = False
 
-MAILCHIMP_API_KEY = '12da674bf3abf0c1bd2dab5a12b76cc5-us12'
+MAILCHIMP_API_KEY = os.environ.get('MAILCHIMP_API_KEY')
 MAILCHIMP_DATA_CENTER = 'us12'
-MAILCHIMP_EMAIL_LIST_ID = 'a914bf1dd4'
+MAILCHIMP_EMAIL_LIST_ID = os.environ.get('MAILCHIMP_EMAIL_LIST_ID')
 
-STRIPE_SECRET_KEY = 'sk_test_4iOsXdUfCAWUKc9z2jgm8nMz'
-STRIPE_PUB_KEY = 'pk_test_n4x1iwLTjFybqvvA5Q9bAAib'
+STRIPE_SECRET_KEY = os.environ.get('STRIPE_SECRET_KEY', 'sk_test_4iOsXdUfCAWUKc9z2jgm8nMz')
+STRIPE_PUB_KEY = os.environ.get('STRIPE_PUB_KEY', 'pk_test_n4x1iwLTjFybqvvA5Q9bAAib')
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
