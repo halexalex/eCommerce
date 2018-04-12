@@ -21,6 +21,19 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__fil
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'p9osyyg2x1wa8d$tg9sq8@u@+%4pvd^6b*@9i=g1cb4==9r*zu'
 
+EMAIL_HOST = '<your host>'
+EMAIL_HOST_USER = '<your email>'
+EMAIL_HOST_PASSWORD = '<your password>'
+EMAIL_PORT = '<port>'
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = 'Python ecommerce <your email>'
+
+MANAGERS = (
+    ('<email>', '<name>'),
+)
+
+ADMINS = MANAGERS
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
