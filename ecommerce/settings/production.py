@@ -31,7 +31,7 @@ EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = f'Python ecommerce {EMAIL_HOST_USER}'
 
 MANAGERS = (
-    (f'{EMAIL_HOST_USER}', 'Alexander Harlamov'),
+    ('Alexander Harlamov', f'{EMAIL_HOST_USER}'),
 )
 
 ADMINS = MANAGERS
