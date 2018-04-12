@@ -22,7 +22,19 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__fil
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = os.environ.get('SECRET_KEY')
+
+EMAIL_HOST = 'smtp.yandex.ru'
+EMAIL_HOST_USER = 'halex.alex@yandex.ru'
 EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
+EMAIL_PORT = 465
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = 'Python ecommerce <halex.alex@yandex.ru>'
+
+MANAGERS = (
+    ('halex.alex@yandex.ru', 'Alexander Harlamov'),
+)
+
+ADMINS = MANAGERS
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
