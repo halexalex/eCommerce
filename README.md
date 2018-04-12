@@ -17,15 +17,15 @@ Build Django powered eCommerce web application
 - [x] Create a custom user model
 - [x] Build custom analytics
 - [x] Payment Integration using [Stripe](https://stripe.com/)
-- [x] Email Marketing Integration using Mailchimp
+- [x] Email Marketing Integration using [Mailchimp](https://mailchimp.com/)
 - [x] Going Live using the host Heroku
 - [x] Implement HTTPs (using Let's Encrypt)
 - [x] Use Amazon S3 cloud storage for static files
-- [ ] Integrate Email for notifications
+- [x] Integrate Email for notifications
 - [ ] Build a REST API
 - [ ] Digital item sales and downloads
 
 ## Current progress:
 [Already live on Heroku!](https://nameless-waters-84605.herokuapp.com/)
 
-![Progress bar](http://progressed.io/bar/83 "Progress bar")
+![Progress bar](http://progressed.io/bar/88 "Progress bar")
