@@ -29,7 +29,7 @@ EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = 'Python ecommerce <your email>'
 
 MANAGERS = (
-    ('<email>', '<name>'),
+    ('<name>', '<email>'),
 )
 
 ADMINS = MANAGERS
