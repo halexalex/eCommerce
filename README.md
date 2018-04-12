@@ -21,7 +21,7 @@ Build Django powered eCommerce web application
 - [x] Going Live using the host Heroku
 - [x] Implement HTTPs (using Let's Encrypt)
 - [x] Use Amazon S3 cloud storage for static files
-- [x] Integrate Email for notifications
+- [x] Integrate Email for server error notifications
 - [ ] Build a REST API
 - [ ] Digital item sales and downloads
 
