@@ -29,8 +29,8 @@ Project core is done and it`s [already live on Heroku!](https://nameless-waters-
 
 Next steps:
 
-- [ ] Account Detail page
-- [ ] Password Management
+- [x] Account Detail page
+- [x] Password Management
 - [ ] Email Activation (verify emails & change email)
 - [ ] Billing Details (address/cards)
 - [ ] Order Details (paid/shipped/refunded)
@@ -40,7 +40,7 @@ Next steps:
 - [ ] Graphs and Sales
 - [ ] ???
 
-![Progress bar](http://progressed.io/bar/0 "Progress bar")
+![Progress bar](http://progressed.io/bar/20 "Progress bar")
 
 
 
