@@ -16,7 +16,7 @@ class UserManager(BaseUserManager):
         user_obj.set_password(password)  # change password
         user_obj.staff = is_staff
         user_obj.admin = is_admin
-        user_obj.active = is_active
+        user_obj.is_active = is_active
         user_obj.save(using=self._db)
         return user_obj
 
@@ -41,7 +41,6 @@ class UserManager(BaseUserManager):
 class User(AbstractBaseUser):  # Custom user class
     email = models.EmailField(max_length=255, unique=True)
     full_name = models.CharField(max_length=255, blank=True, null=True)
-    active = models.BooleanField(default=True)
     is_active = models.BooleanField(default=True)
     staff = models.BooleanField(default=False)
     admin = models.BooleanField(default=False)

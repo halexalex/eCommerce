@@ -40,7 +40,7 @@ class UserAdminChangeForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ('email', 'password', 'active', 'admin')
+        fields = ('email', 'password', 'is_active', 'admin')
 
     def clean_password(self):
         """ Regardless of what the user provides, return the initial value.
@@ -79,7 +79,7 @@ class RegisterForm(forms.ModelForm):
     def save(self, commit=True):  # Save the provided password in hashed format
         user = super(RegisterForm, self).save(commit=False)
         user.set_password(self.cleaned_data['password1'])
-        # user.active = False  # send confirmation email
+        # user.is_active = False  # send confirmation email
         if commit:
             user.save()
         return user
