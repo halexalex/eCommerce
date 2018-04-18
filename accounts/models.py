@@ -116,7 +116,7 @@ class EmailActivation(models.Model):
     def send_activation(self):
         if not self.activated and not self.forced_expired:
             if self.key:
-                base_url = getattr(settings, 'BASE_URL', '127.0.0.1:8000')
+                base_url = getattr(settings, 'BASE_URL')
                 key_path = self.key  # use reverse
                 path = f'{base_url}{key_path}'
                 context = {
@@ -128,7 +128,7 @@ class EmailActivation(models.Model):
                 subject = '1-Click Email Verification'
                 from_email = settings.DEFAULT_FROM_EMAIL
                 recipient_list = [self.email]
-                print('Not failed yet!')
+
                 sent_mail = send_mail(subject=subject,
                                       message=txt_,
                                       from_email=from_email,
@@ -136,9 +136,7 @@ class EmailActivation(models.Model):
                                       html_message=html_,
                                       fail_silently=False,
                                       )
-                print('Success!')
                 return sent_mail
-        print('Fail!')
         return False
 
 

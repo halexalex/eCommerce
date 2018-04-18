@@ -18,13 +18,13 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__fil
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'p9osyyg2x1wa8d$tg9sq8@u@+%4pvd^6b*@9i=g1cb4==9r*zu'
 
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'nullknight42@gmail.com'
-EMAIL_HOST_PASSWORD = 'learntocode'
-EMAIL_PORT = 587
+EMAIL_HOST = '<your host>'
+EMAIL_HOST_USER = '<your email>'
+EMAIL_HOST_PASSWORD = '<your password>'
+EMAIL_PORT = '<port>'
 EMAIL_USE_TLS = True
-DEFAULT_FROM_EMAIL = 'From nullknight42@gmail.com'
-BASE_URL = 'http://127.0.0.1:8000'
+DEFAULT_FROM_EMAIL = 'Python ecommerce <your email>'
+BASE_URL = '<url>'
 
 MANAGERS = (
     ('<name>', '<email>'),
@@ -71,9 +71,9 @@ LOGOUT_URL = '/logout/'
 FORCE_SESSION_TO_ONE = False
 FORCE_INACTIVE_USER_ENDSESSION = False
 
-MAILCHIMP_API_KEY = '2aaa026f8a06324c70600dd674702db1-us12'
+MAILCHIMP_API_KEY = os.environ.get('MAILCHIMP_API_KEY')
 MAILCHIMP_DATA_CENTER = 'us12'
-MAILCHIMP_EMAIL_LIST_ID = 'a914bf1dd4'
+MAILCHIMP_EMAIL_LIST_ID = os.environ.get('MAILCHIMP_EMAIL_LIST_ID')
 
 STRIPE_SECRET_KEY = os.environ.get('STRIPE_SECRET_KEY', 'sk_test_4iOsXdUfCAWUKc9z2jgm8nMz')
 STRIPE_PUB_KEY = os.environ.get('STRIPE_PUB_KEY', 'pk_test_n4x1iwLTjFybqvvA5Q9bAAib')
