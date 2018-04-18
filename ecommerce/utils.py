@@ -40,3 +40,17 @@ def unique_slug_generator(instance, new_slug=None):
         )
         return unique_slug_generator(instance, new_slug=new_slug)
     return slug
+
+
+def unique_key_generator(instance):
+    """
+        This is for a Django project with a key field
+    """
+    size = random.randint(30, 45)
+    key = random_string_generator(size=size)
+
+    _Class = instance.__class__
+    qs_exists = _Class.objects.filter(key=key).exists()
+    if qs_exists:
+        return unique_slug_generator(instance)
+    return key

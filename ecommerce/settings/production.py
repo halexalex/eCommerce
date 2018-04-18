@@ -29,6 +29,7 @@ EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = f'Python ecommerce {EMAIL_HOST_USER}'
+BASE_URL = os.environ.get('BASE_URL')
 
 MANAGERS = (
     ('Alexander Harlamov', f'{EMAIL_HOST_USER}'),

@@ -24,6 +24,7 @@ EMAIL_HOST_PASSWORD = '<your password>'
 EMAIL_PORT = '<port>'
 EMAIL_USE_TLS = True
 DEFAULT_FROM_EMAIL = 'Python ecommerce <your email>'
+BASE_URL = '<url>'
 
 MANAGERS = (
     ('<name>', '<email>'),
