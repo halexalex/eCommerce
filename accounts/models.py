@@ -4,6 +4,7 @@ from random import randint
 from django.conf import settings
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
 from django.core.mail import send_mail
+from django.core.urlresolvers import reverse
 from django.db import models
 from django.db.models.signals import pre_save, post_save
 from django.template.loader import get_template
@@ -163,7 +164,7 @@ class EmailActivation(models.Model):
         if not self.activated and not self.forced_expired:
             if self.key:
                 base_url = getattr(settings, 'BASE_URL')
-                key_path = self.key  # use reverse
+                key_path = reverse('account:email-activate', kwargs={'key': self.key})  # use reverse
                 path = f'{base_url}{key_path}'
                 context = {
                     'path': path,
