@@ -8,6 +8,7 @@ from django.utils.safestring import mark_safe
 from django.views.generic import CreateView, FormView, DetailView, View
 from django.views.generic.edit import FormMixin
 
+from ecommerce.mixins import NextUrlMixin, RequestFormAttachMixin
 from .forms import GuestForm, LoginForm, RegisterForm, ReactivateEmailForm
 from .models import EmailActivation, GuestEmail
 from .signals import user_logged_in
@@ -25,7 +26,7 @@ class AccountEmailActivateView(FormMixin, View):
     form_class = ReactivateEmailForm
     key = None
 
-    def get(self, request, key=None,  *args, **kwargs):
+    def get(self, request, key=None, *args, **kwargs):
         self.key = key
         if key is not None:
             qs = EmailActivation.objects.filter(key__iexact=key)
@@ -55,7 +56,7 @@ class AccountEmailActivateView(FormMixin, View):
             return self.form_invalid(form)
 
     def form_valid(self, form):
-        msg = f"""Activation link sent, please check your email."""
+        msg = """Activation link sent, please check your email."""
         request = self.request
         messages.success(request, msg)
         email = form.cleaned_data.get('email')
@@ -90,34 +91,15 @@ def guest_register_view(request):
     return redirect('/register/')
 
 
-class LoginView(FormView):
+class LoginView(NextUrlMixin, RequestFormAttachMixin, FormView):
     form_class = LoginForm
     success_url = '/'
     template_name = 'accounts/login.html'
+    default_next = '/'
 
     def form_valid(self, form):
-        request = self.request
-        next_ = request.GET.get('next')
-        next_post = request.POST.get('next')
-        redirect_path = next_ or next_post or None
-        email = form.cleaned_data.get('email')
-        password = form.cleaned_data.get('password')
-        user = authenticate(request, username=email, password=password)
-        if user is not None:
-            if not user.is_active:
-                messages.error(request, "This user is inactive")
-                return super(LoginView, self).form_invalid(form)
-            login(request, user)
-            user_logged_in.send(user.__class__, instance=user, request=request)
-            try:
-                del request.session['guest_email_id']
-            except:
-                pass
-            if is_safe_url(redirect_path, request.get_host()):
-                return redirect(redirect_path)
-            else:
-                return redirect('/')
-        return super(LoginView, self).form_invalid(form)
+        next_path = self.get_next_url()
+        return redirect(next_path)
 
 
 class RegisterView(CreateView):
