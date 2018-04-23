@@ -1,6 +1,6 @@
 from django.conf.urls import url
 
-from .views import AccountHomeView, AccountEmailActivateView
+from .views import AccountEmailActivateView, AccountHomeView
 
 urlpatterns = [
     url(r'^$', AccountHomeView.as_view(), name='home'),

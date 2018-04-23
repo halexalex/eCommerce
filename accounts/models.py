@@ -7,11 +7,11 @@ from django.core.mail import send_mail
 from django.core.urlresolvers import reverse
 from django.db import models
 from django.db.models import Q
-from django.db.models.signals import pre_save, post_save
+from django.db.models.signals import post_save, pre_save
 from django.template.loader import get_template
 from django.utils import timezone
 
-from ecommerce.utils import unique_key_generator, random_string_generator
+from ecommerce.utils import random_string_generator, unique_key_generator
 
 DEFAULT_ACTIVATION_DAYS = getattr(settings, 'DEFAULT_ACTIVATION_DAYS', 7)
 
