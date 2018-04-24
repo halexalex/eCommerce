@@ -17,7 +17,7 @@ Build Django powered eCommerce web application
 - [x] Build custom analytics
 - [x] Payment Integration using [Stripe](https://stripe.com/)
 - [x] Email Marketing Integration using [Mailchimp](https://mailchimp.com/)
-- [x] Going Live using the host Heroku
+- [x] Going Live using the host [Heroku](https://www.heroku.com)
 - [x] Implement HTTPs (using Let's Encrypt)
 - [x] Use Amazon S3 cloud storage for static files
 - [x] Integrate Email for server error notifications
