@@ -3,7 +3,7 @@
 {% block content %}
     <div class="row">
         <div class="col-12">
-            <h1>Account</h1>
+            <h1>Hi, {{ user.full_name }}!</h1>
             <hr>
         </div>
 
@@ -37,8 +37,8 @@
                 <div class="card-body">
                     <h4 class="card-title">Account Details</h4>
                     <div class="list-group">
-                        <a class="list-group-item" href="#">Username</a>
-                        <a class="list-group-item" href="#">Reset Password</a>
+                        <a class="list-group-item" href="{% url 'account:user-update' %}">My details</a>
+                        <a class="list-group-item" href="{% url 'password_change' %}">Change Password</a>
                     </div>
                 </div>
             </div>

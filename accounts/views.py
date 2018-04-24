@@ -4,12 +4,12 @@ from django.core.urlresolvers import reverse
 from django.shortcuts import redirect, render
 
 from django.utils.safestring import mark_safe
-from django.views.generic import CreateView, DetailView, FormView, View
+from django.views.generic import CreateView, DetailView, FormView, View, UpdateView
 from django.views.generic.edit import FormMixin
 
 from ecommerce.mixins import NextUrlMixin, RequestFormAttachMixin
 
-from .forms import GuestForm, LoginForm, ReactivateEmailForm, RegisterForm
+from .forms import GuestForm, LoginForm, ReactivateEmailForm, RegisterForm, UserDetailChangeForm
 from .models import EmailActivation, GuestEmail
 
 
@@ -96,3 +96,19 @@ class RegisterView(CreateView):
     form_class = RegisterForm
     template_name = 'accounts/register.html'
     success_url = '/login/'
+
+
+class UserDetailUpdateView(LoginRequiredMixin, UpdateView):
+    form_class = UserDetailChangeForm
+    template_name = 'accounts/detail-update-view.html'
+
+    def get_object(self, queryset=None):
+        return self.request.user
+
+    def get_context_data(self, **kwargs):
+        context = super(UserDetailUpdateView, self).get_context_data(**kwargs)
+        context['title'] = 'Change Your Account Details'
+        return context
+
+    def get_success_url(self):
+        return reverse('account:home')
