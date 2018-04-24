@@ -26,6 +26,7 @@ Build Django powered eCommerce web application
 Project core is done and it`s [already live on Heroku!](https://nameless-waters-84605.herokuapp.com/)*
 
 <sub><sup>*If you are accessing it from Russia, you`ll probably need to use VPN service</sup></sub>
+
 ![Progress bar](http://progressed.io/bar/100?title=done "Progress bar")
 
 Next steps:
