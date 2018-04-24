@@ -33,7 +33,7 @@ Next steps:
 
 - [x] Account Detail page
 - [x] Password Management
-- [ ] Email Activation (verify emails & change email)
+- [x] Email Activation
 - [ ] Billing Details (address/cards)
 - [ ] Order Details (paid/shipped/refunded)
 - [ ] Browsing History
@@ -42,7 +42,7 @@ Next steps:
 - [ ] Graphs and Sales
 - [ ] ???
 
-![Progress bar](http://progressed.io/bar/20 "Progress bar")
+![Progress bar](http://progressed.io/bar/30 "Progress bar")
 
 
 
