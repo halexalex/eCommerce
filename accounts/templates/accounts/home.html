@@ -3,7 +3,12 @@
 {% block content %}
     <div class="row">
         <div class="col-12">
-            <h1>Hi, {{ user.full_name }}!</h1>
+            <h1>{% if user.full_name %}
+                Hi, {{ user.full_name }}!
+                {% else %}
+                Account {{ user }}
+                {% endif %}
+            </h1>
             <hr>
         </div>
 
