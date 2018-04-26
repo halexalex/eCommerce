@@ -34,15 +34,15 @@ Next steps:
 - [x] Account Detail page
 - [x] Password Management
 - [x] Email Activation
-- [ ] Billing Details (address/cards)
-- [ ] Order Details (paid/shipped/refunded)
-- [ ] Browsing History
-- [ ] UI improvement
+- [x] Billing Details (address/cards)
+- [x] Order Details (paid/shipped/refunded)
+- [x] Browsing History
 - [ ] Selling digital items section
 - [ ] Graphs and Sales
+- [ ] UI/UX improvement
 - [ ] ???
 
-![Progress bar](http://progressed.io/bar/30 "Progress bar")
+![Progress bar](http://progressed.io/bar/60 "Progress bar")
 
 
 
