@@ -3,7 +3,7 @@ from django.http import JsonResponse
 from django.shortcuts import redirect, render
 
 from accounts.forms import GuestForm, LoginForm
-from addresses.forms import AddressForm
+from addresses.forms import AddressCheckoutForm
 from addresses.models import Address
 from billing.models import BillingProfile
 from orders.models import Order
@@ -69,7 +69,7 @@ def checkout_home(request):
 
     login_form = LoginForm(request=request)
     guest_form = GuestForm(request=request)
-    address_form = AddressForm()
+    address_form = AddressCheckoutForm()
     shipping_address_id = request.session.get('shipping_address_id', None)
     billing_address_id = request.session.get('billing_address_id', None)
 

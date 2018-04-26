@@ -24,9 +24,9 @@
                 <div class="card-body">
                     <h4 class="card-title">Billing</h4>
                     <div class="list-group">
-                        <a class="list-group-item" href="{% url "orders:list" %}">Orders</a>
+                        <a class="list-group-item" href="{% url 'orders:list' %}">Orders</a>
                         <a class="list-group-item" href="{% url 'billing-payment-method' %}">Payment Methods</a>
-                        <a class="list-group-item" href="#">Addresses</a>
+                        <a class="list-group-item" href="{% url 'addresses' %}">Addresses</a>
                     </div>
                 </div>
             </div>
