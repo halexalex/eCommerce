@@ -67,11 +67,11 @@ class Product(models.Model):
     featured = models.BooleanField(default=True)
     active = models.BooleanField(default=True)
     timestamp = models.DateTimeField(auto_now_add=True)
+    is_digital = models.BooleanField(default=False)
 
     objects = ProductManager()
 
     def get_absolute_url(self):
-        # return '/products/{slug}/'.format(slug=self.slug)
         return reverse('products:detail', kwargs={'slug': self.slug})
 
     def __str__(self):
