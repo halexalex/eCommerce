@@ -40,11 +40,12 @@ class Address(models.Model):
         )
 
     def get_address(self):
-        return '{line_1}\n{line_2}\n{city}\n{region}, {postal}\n{country}'.format(
-            line_1=self.address_line_1,
-            line_2=self.address_line_2 or "",
-            country=self.country,
+        return "{for_name}\n{line1}\n{line2}\n{city}\n{region}, {postal}\n{country}".format(
+            for_name=self.name or "",
+            line1=self.address_line_1,
+            line2=self.address_line_2 or "",
             city=self.city,
             region=self.region,
-            postal=self.postal_code
+            postal=self.postal_code,
+            country=self.country
         )
