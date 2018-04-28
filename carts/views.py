@@ -71,6 +71,9 @@ def checkout_home(request):
     guest_form = GuestForm(request=request)
     address_form = AddressCheckoutForm()
     shipping_address_id = request.session.get('shipping_address_id', None)
+
+    shipping_address_required = not cart_obj.is_digital
+
     billing_address_id = request.session.get('billing_address_id', None)
 
     billing_profile, billing_profile_created = BillingProfile.objects.new_or_get(request)
@@ -92,6 +95,7 @@ def checkout_home(request):
         has_card = billing_profile.has_card
 
     if request.method == "POST":
+        # Check that the order is done
         is_prepared = order_obj.check_done()
         if is_prepared:
             did_charge, charge_msg = billing_profile.charge(order_obj)
@@ -118,6 +122,7 @@ def checkout_home(request):
         'address_qs': address_qs,
         'has_card': has_card,
         'publish_key': STRIPE_PUB_KEY,
+        'shipping_address_required': shipping_address_required
     }
     return render(request, 'carts/checkout.html', context)
 
