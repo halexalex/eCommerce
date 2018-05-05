@@ -40,9 +40,9 @@
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item {% if request.path == account_url %}active{% endif %}"
                                href="{{ account_url }}">Home</a>
-                            <a class="dropdown-item" href="#">Billing</a>
-                            <a class="dropdown-item" href="#">Settings</a>
-                            <a class="dropdown-item" href="#">History</a>
+                            <a class="dropdown-item" href="{% url 'library' %}">Library</a>
+                            <a class="dropdown-item" href="{% url 'account:user-update' %}">My Details</a>
+                            <a class="dropdown-item" href="{% url 'account:user-product-history' %}">History</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="{{ logout_url }}">Logout</a>
                         </div>

@@ -3,7 +3,7 @@ from django.http import Http404
 from django.views.generic import DetailView, ListView
 
 from billing.models import BillingProfile
-from .models import Order
+from .models import Order, ProductPurchase
 
 
 class OrderListView(LoginRequiredMixin, ListView):
@@ -28,3 +28,10 @@ class OrderDetailView(LoginRequiredMixin, DetailView):
         billing_profile, billing_profile_created = BillingProfile.objects.new_or_get(request=self.request)
         context['billing_profile'] = billing_profile
         return context
+
+
+class LibraryView(LoginRequiredMixin, ListView):
+    template_name = 'orders/library.html'
+
+    def get_queryset(self):
+        return ProductPurchase.objects.by_request(self.request).digital()
