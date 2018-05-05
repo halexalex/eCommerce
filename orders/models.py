@@ -103,11 +103,21 @@ class Order(models.Model):
             return True
         return False
 
+    def update_purchases(self):
+        for p in self.cart.products.all():
+            obj, created = ProductPurchase.objects.get_or_create(
+                order_id=self.order_id,
+                product=p,
+                billing_profile=self.billing_profile
+            )
+        return ProductPurchase.objects.filter(order_id=self.order_id).count()
+
     def mark_paid(self):
         if self.status != 'paid':
             if self.check_done():
                 self.status = 'paid'
                 self.save()
+                self.update_purchases()
         return self.status
 
     def get_status(self):
@@ -164,7 +174,7 @@ class ProductPurchaseManager(models.Manager):
 
 
 class ProductPurchase(models.Model):
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, blank=True, null=True)
+    order_id = models.CharField(max_length=120)
     billing_profile = models.ForeignKey(BillingProfile, null=True, blank=True)
     product = models.ForeignKey(Product)
     refunded = models.BooleanField(default=False)
@@ -175,4 +185,3 @@ class ProductPurchase(models.Model):
 
     def __str__(self):
         return self.product.title
-
