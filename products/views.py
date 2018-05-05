@@ -1,12 +1,12 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.http import Http404
+from django.http import Http404, HttpResponse
 from django.shortcuts import render
-from django.views.generic import DetailView, ListView
+from django.views.generic import DetailView, ListView, View
 
 from analytics.mixins import ObjectViewedMixin
 from carts.models import Cart
 
-from .models import Product
+from .models import Product, ProductFile
 
 
 class ProductFeaturedListView(ListView):
@@ -83,6 +83,20 @@ class ProductDetailSlugView(ObjectViewedMixin, DetailView):
             raise Http404('Uhhhmmm')
 
         return instance
+
+
+class ProductDownloadView(View):
+    def get(self, *args, **kwargs):
+        slug = kwargs.get('slug')
+        pk = kwargs.get('pk')
+        downloads_qs = ProductFile.objects.filter(pk=pk, product__slug=slug)
+        if downloads_qs.count() != 1:
+            raise Http404('Download not found!')
+        download_obj = downloads_qs.first()
+        # permission check
+        # form download
+        response = HttpResponse(download_obj.get_download_url())
+        return response
 
 
 class ProductDetailView(ObjectViewedMixin, DetailView):
