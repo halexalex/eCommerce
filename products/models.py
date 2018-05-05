@@ -92,3 +92,20 @@ def product_pre_save_receiver(sender, instance, *args, **kwargs):
 
 
 pre_save.connect(product_pre_save_receiver, sender=Product)
+
+
+def upload_product_file_location(instance, filename):
+    print(instance.id)
+    slug = instance.product.slug
+    if not slug:
+        slug = unique_slug_generator(instance.product)
+    location = f'product/{slug}/'
+    return location + filename  # 'path/to/filename.mp3'
+
+
+class ProductFile(models.Model):
+    product = models.ForeignKey(Product)
+    file = models.FileField(upload_to=upload_product_file_location)
+
+    def __str__(self):
+        return str(self.file.name)
