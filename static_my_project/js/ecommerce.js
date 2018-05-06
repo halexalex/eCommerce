@@ -92,6 +92,46 @@ $(document).ready(function () {
 
     // Cart + Add Products
     var productForm = $(".form-product-ajax");
+
+    function getOwnedProduct(productId, submitSpan) {
+        var actionEndPoint = "/orders/endpoint/verify/ownership/";
+        var httpMethod = "GET";
+        var data = {
+            product_id: productId
+        };
+
+        var isOwner;
+        $.ajax({
+            url: actionEndPoint,
+            method: httpMethod,
+            data: data,
+            success: function(data) {
+                if (data.owner) {
+                    isOwner = true;
+                    submitSpan.html("<a class='btn btn-warning' href='/library/'>In Library</a>");
+                } else {
+                    isOwner = false;
+                }
+            },
+            error: function(error) {
+                console.log(error);
+            }
+        });
+        return isOwner
+    };
+
+    $.each(productForm, function (index, object) {
+        var $this = $(this);
+        var isUser = $this.attr("data-user");
+        var submitSpan = $this.find(".submit-span");
+        var productInput = $this.find("[name='product_id']");
+        var productId = productInput.attr("value");
+        var productIsDigital = productInput.attr("data-is-digital");
+        if (productIsDigital && isUser) {
+            var isOwned = getOwnedProduct(productId, submitSpan);
+        }
+    });
+
     productForm.submit(function (event) {
         event.preventDefault();
         var thisForm = $(this);
@@ -107,7 +147,8 @@ $(document).ready(function () {
                 var submitSpan = thisForm.find(".submit-span");
                 if (data.added) {
                     submitSpan.html(
-                        "In cart <button type='submit' class='btn btn-link'>Remove</button>"
+                        "<div class=\"btn-group\"><a class=\"btn btn-link\" href=\"/cart/\">In cart</a>\n" +
+                        "            <button type=\"submit\" class=\"btn btn-link\">Remove?</button></div>"
                     );
                 } else {
                     submitSpan.html(
