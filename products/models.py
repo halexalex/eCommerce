@@ -99,13 +99,11 @@ pre_save.connect(product_pre_save_receiver, sender=Product)
 
 def upload_product_file_location(instance, filename):
     slug = instance.product.slug
-    id_ = 0
-    try:
-         id_ = instance.id
-    except:
+    id_ = instance.id
+    if id_ is None:
         Class_ = instance.__class__
-        qs = Class_.objects.all().order_by('pk')
-        id_ = qs.first() + 1
+        qs = Class_.objects.all().order_by('-pk')
+        id_ = qs.first().id + 1
 
     if not slug:
         slug = unique_slug_generator(instance.product)
