@@ -3,6 +3,7 @@ from django.http import Http404
 from django.views.generic import DetailView, ListView
 
 from billing.models import BillingProfile
+
 from .models import Order, ProductPurchase
 
 
