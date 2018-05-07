@@ -22,7 +22,7 @@ Build Django powered eCommerce web application
 - [x] Integrate Email for server error notifications
 
 ## Current progress:
-Project core is done and it`s [already live on Heroku!](https://nameless-waters-84605.herokuapp.com/)*
+Most of the features are [already live on Heroku!](https://nameless-waters-84605.herokuapp.com/)*
 
 <sub><sup>*If you are accessing it from Russia, you`ll probably need to use VPN service</sup></sub>
 
@@ -36,14 +36,14 @@ Next steps:
 - [x] Billing Details (address/cards)
 - [x] Order Details (paid/shipped/refunded)
 - [x] Browsing History
-- [ ] Selling digital items section
+- [x] Selling digital items section
 - [ ] Graphs and Sales
 - [ ] UI/UX improvement
 - [ ] ???
 
-![Progress bar](http://progressed.io/bar/60 "Progress bar")
+![Progress bar](http://progressed.io/bar/70 "Progress bar")
 
-*Special Props to [Justin Mitchell](https://twitter.com/justinmitchel) from [Coding for Enterpreneurs](https://www.codingforentrepreneurs.com/)
+*Special props to [Justin Mitchell](https://twitter.com/justinmitchel) from [Coding for Enterpreneurs](https://www.codingforentrepreneurs.com/)
 
 
 
