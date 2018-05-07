@@ -1,8 +1,8 @@
 import datetime
 import os
 
-AWS_USERNAME = "halex-ecommerce"
-AWS_GROUP_NAME = "ECOMMERCE_GROUP"
+AWS_USERNAME = os.environ.get('AWS_USERNAME')
+AWS_GROUP_NAME = os.environ.get('AWS_GROUP_NAME')
 AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
 AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
 
@@ -12,7 +12,7 @@ AWS_QUERYSTRING_AUTH = False
 
 DEFAULT_FILE_STORAGE = 'ecommerce.aws.utils.MediaRootS3BotoStorage'
 STATICFILES_STORAGE = 'ecommerce.aws.utils.StaticRootS3BotoStorage'
-AWS_STORAGE_BUCKET_NAME = 'halex-bucket'
+AWS_STORAGE_BUCKET_NAME = os.environ.get('AWS_STORAGE_BUCKET_NAME')
 S3DIRECT_REGION = 'us-east-1'
 S3_URL = '//%s.s3.amazonaws.com/' % AWS_STORAGE_BUCKET_NAME
 MEDIA_URL = '//%s.s3.amazonaws.com/media/' % AWS_STORAGE_BUCKET_NAME
@@ -28,3 +28,8 @@ AWS_HEADERS = {
     'Expires': expires,
     'Cache-Control': 'max-age=%d' % (int(two_months.total_seconds()),),
 }
+
+PROTECTED_DIR_NAME = os.environ.get('PROTECTED_DIR_NAME')
+PROTECTED_MEDIA_URL = '//%s.s3.amazonaws.com/%s/' % (AWS_STORAGE_BUCKET_NAME, PROTECTED_DIR_NAME)
+
+AWS_DOWNLOAD_EXPIRE = 5000  # (Optional, in milliseconds)
