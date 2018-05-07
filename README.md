@@ -43,7 +43,7 @@ Next steps:
 
 ![Progress bar](http://progressed.io/bar/70 "Progress bar")
 
-Special props to [Justin Mitchell](https://twitter.com/justinmitchel) from [Coding for Enterpreneurs](https://www.codingforentrepreneurs.com/)!
+Special props to [Justin Mitchell](https://twitter.com/justinmitchel)!
 
 
 
