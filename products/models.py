@@ -139,7 +139,7 @@ class ProductFile(models.Model):
         return self.product.get_absolute_url()
 
     def generate_download_url(self):
-        bucket = getattr(settings, 'AWS_STORAGE_NAME')
+        bucket = getattr(settings, 'AWS_STORAGE_BUCKET_NAME')
         region = getattr(settings, 'S3DIRECT_REGION')
         access_key = getattr(settings, 'AWS_ACCESS_KEY_ID')
         secret_key = getattr(settings, 'AWS_SECRET_ACCESS_KEY')
