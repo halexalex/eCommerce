@@ -1,5 +1,5 @@
 # Python eCommerce
-Course made by [Justin Mitchell](https://twitter.com/justinmitchel) from [Coding for Enterpreneurs](https://www.codingforentrepreneurs.com/)
+Props to [Justin Mitchell](https://twitter.com/justinmitchel) from [Coding for Enterpreneurs](https://www.codingforentrepreneurs.com/)
 
 ## Goal:
 Build Django powered eCommerce web application
