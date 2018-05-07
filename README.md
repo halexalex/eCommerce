@@ -1,5 +1,4 @@
 # Python eCommerce
-Props to [Justin Mitchell](https://twitter.com/justinmitchel) from [Coding for Enterpreneurs](https://www.codingforentrepreneurs.com/)
 
 ## Goal:
 Build Django powered eCommerce web application
@@ -43,6 +42,8 @@ Next steps:
 - [ ] ???
 
 ![Progress bar](http://progressed.io/bar/60 "Progress bar")
+
+*Special Props to [Justin Mitchell](https://twitter.com/justinmitchel) from [Coding for Enterpreneurs](https://www.codingforentrepreneurs.com/)
 
 
 
