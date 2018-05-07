@@ -167,6 +167,8 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "static_cdn", "media_root")
 
 PROTECTED_ROOT = os.path.join(BASE_DIR, "static_cdn", "protected_media")
 
+AWS_DOWNLOAD_EXPIRE = 5000  # (Optional, in milliseconds)
+
 # Let`s Encrypt ssl/tls https
 
 CORS_REPLACE_HTTPS_REFERER = False
