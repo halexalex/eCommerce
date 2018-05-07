@@ -8,6 +8,7 @@ from django.db.models import Q
 from django.db.models.signals import pre_save
 from django.urls import reverse
 
+from ecommerce.aws.download.utils import AWSDownload
 from ecommerce.aws.utils import ProtectedS3Storage
 from ecommerce.utils import get_filename, unique_slug_generator
 
@@ -103,7 +104,10 @@ def upload_product_file_location(instance, filename):
     if id_ is None:
         Class_ = instance.__class__
         qs = Class_.objects.all().order_by('-pk')
-        id_ = qs.first().id + 1
+        if qs.exists():
+            id_ = qs.first().id + 1
+        else:
+            id_ = 0
 
     if not slug:
         slug = unique_slug_generator(instance.product)
@@ -125,6 +129,19 @@ class ProductFile(models.Model):
 
     def get_default_url(self):
         return self.product.get_absolute_url()
+
+    def generate_download_url(self):
+        bucket = getattr(settings, 'AWS_STORAGE_NAME')
+        region = getattr(settings, 'S3DIRECT_REGION')
+        access_key = getattr(settings, 'AWS_ACCESS_KEY_ID')
+        secret_key = getattr(settings, 'AWS_SECRET_ACCESS_KEY')
+        if not access_key or not secret_key or not bucket or not region:
+            return '/product_not_found/'
+        protected_dir_name = getattr(settings, 'PROTECTED_DIR_NAME', 'protected')
+        path = f'{protected_dir_name}/{str(self.file)}'  # works for any path inside bucket
+        aws_dl_object = AWSDownload(access_key, secret_key, bucket, region)
+        file_url = aws_dl_object.generate_url(path)
+        return file_url
 
     def get_download_url(self):
         return reverse('products:download', kwargs={'slug': self.product.slug, 'pk': self.pk})
