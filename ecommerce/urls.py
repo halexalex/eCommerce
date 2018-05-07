@@ -6,12 +6,9 @@ from django.contrib.auth.views import LogoutView
 from django.views.generic import RedirectView
 
 from accounts.views import GuestRegisterView, LoginView, RegisterView
-from addresses.views import (checkout_address_create_view,
-                             checkout_address_reuse_view,
-                             AddressCreateView,
-                             AddressListView,
-                             AddressUpdateView,
-                             )
+from addresses.views import (AddressCreateView, AddressListView,
+                             AddressUpdateView, checkout_address_create_view,
+                             checkout_address_reuse_view)
 from analytics.views import SalesView
 from billing.views import payment_method_create_view, payment_method_view
 from carts.views import cart_detail_api_view
@@ -55,6 +52,3 @@ urlpatterns = [
 if settings.DEBUG:
     urlpatterns = urlpatterns + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
     urlpatterns = urlpatterns + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
-
-
-

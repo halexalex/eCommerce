@@ -2,14 +2,15 @@ from django.contrib import messages
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.core.urlresolvers import reverse
 from django.shortcuts import redirect, render
-
 from django.utils.safestring import mark_safe
-from django.views.generic import CreateView, DetailView, FormView, View, UpdateView
+from django.views.generic import (CreateView, DetailView, FormView, UpdateView,
+                                  View)
 from django.views.generic.edit import FormMixin
 
 from ecommerce.mixins import NextUrlMixin, RequestFormAttachMixin
 
-from .forms import GuestForm, LoginForm, ReactivateEmailForm, RegisterForm, UserDetailChangeForm
+from .forms import (GuestForm, LoginForm, ReactivateEmailForm, RegisterForm,
+                    UserDetailChangeForm)
 from .models import EmailActivation, GuestEmail
 
 

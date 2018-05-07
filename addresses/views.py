@@ -1,11 +1,11 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import redirect
-from django.views.generic import ListView, UpdateView, CreateView
 from django.utils.http import is_safe_url
+from django.views.generic import CreateView, ListView, UpdateView
 
 from billing.models import BillingProfile
 
-from .forms import AddressForm, AddressCheckoutForm
+from .forms import AddressCheckoutForm, AddressForm
 from .models import Address
 
 

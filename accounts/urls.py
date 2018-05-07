@@ -1,7 +1,9 @@
 from django.conf.urls import url
 
 from products.views import UserProductHistoryView
-from .views import AccountEmailActivateView, AccountHomeView, UserDetailUpdateView
+
+from .views import (AccountEmailActivateView, AccountHomeView,
+                    UserDetailUpdateView)
 
 urlpatterns = [
     url(r'^$', AccountHomeView.as_view(), name='home'),

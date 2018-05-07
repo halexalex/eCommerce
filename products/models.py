@@ -153,4 +153,3 @@ class ProductFile(models.Model):
 
     def get_download_url(self):
         return reverse('products:download', kwargs={'slug': self.product.slug, 'pk': self.pk})
-

@@ -1,8 +1,9 @@
-import boto
-import re
 import os
+import re
 
 from django.conf import settings
+
+import boto
 from boto.s3.connection import OrdinaryCallingFormat
 
 
