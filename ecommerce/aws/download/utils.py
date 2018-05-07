@@ -11,14 +11,14 @@ class AWSDownload(object):
     secret_key = None
     bucket = None
     region = None
-    expires = getattr(settings, 'AWS_DOWNLOAD_EXPIRE')
+    expires = getattr(settings, 'AWS_DOWNLOAD_EXPIRE', 5000)
 
     def __init__(self, access_key, secret_key, bucket, region, *args, **kwargs):
+        self.bucket = bucket
         self.access_key = access_key
         self.secret_key = secret_key
-        self.bucket = bucket
         self.region = region
-        super().__init__(*args, **kwargs)
+        super(AWSDownload, self).__init__(*args, **kwargs)
 
     def s3connect(self):
         conn = boto.s3.connect_to_region(
@@ -37,7 +37,7 @@ class AWSDownload(object):
         return bucket
 
     def get_key(self, path):
-        bucket = self.bucket
+        bucket = self.get_bucket()
         key = bucket.get_key(path)
         return key
 
@@ -45,10 +45,10 @@ class AWSDownload(object):
         current_filename = os.path.basename(path)
         if new_filename is not None:
             filename, file_extension = os.path.splitext(current_filename)
-            escaped_new_filename_base = re.sub('[^A-Za-z0-9#]',
-                                               '-',
-                                               new_filename
-                                               )
+            escaped_new_filename_base = re.sub(
+                '[^A-Za-z0-9#]+',
+                '-',
+                new_filename)
             escaped_filename = escaped_new_filename_base + file_extension
             return escaped_filename
         return current_filename
@@ -62,11 +62,10 @@ class AWSDownload(object):
                 filename = self.get_filename(path, new_filename=new_filename)
                 headers = {
                     'response-content-type': 'application/force-download',
-                    'response-content-disposition': f'attachment;filename={filename}'
+                    'response-content-disposition': 'attachment;filename="%s"' % filename
                 }
             file_url = aws_obj_key.generate_url(
                 response_headers=headers,
                 expires_in=self.expires,
-                method='GET'
-            )
+                method='GET')
         return file_url
