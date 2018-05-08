@@ -125,7 +125,6 @@ DATABASES = {
     }
 }
 
-
 db_from_env = dj_database_url.config()  # postgreSQL Database in heroku
 DATABASES['default'].update(db_from_env)
 DATABASES['default']['CONN_MAX_AGE'] = 500
@@ -153,7 +152,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Moscow'  # 'UTC'
 
 USE_I18N = True
 
