@@ -1,5 +1,4 @@
 from django.contrib.auth.mixins import LoginRequiredMixin
-from django.db.models import Avg, Count, Sum
 from django.shortcuts import render
 from django.views.generic import TemplateView
 
@@ -17,14 +16,14 @@ class SalesView(LoginRequiredMixin, TemplateView):
 
     def get_context_data(self, *args, **kwargs):
         context = super(SalesView, self).get_context_data(*args, **kwargs)
-        qs = Order.objects.all()
+        qs = Order.objects.all().by_date()
         print(qs)
         context['orders'] = qs
-        context['recent_orders'] = qs.recent().not_refunded()[:5]
+        context['recent_orders'] = qs.recent().not_refunded()
         context['recent_orders_data'] = context['recent_orders'].totals_data()
         context['recent_orders_cart_data'] = context['recent_orders'].cart_data()
-        context['shipped_orders'] = qs.recent().not_refunded().by_status(status='shipped')[:1]
+        context['shipped_orders'] = qs.recent().not_refunded().by_status(status='shipped')
         context['shipped_orders_data'] = context['shipped_orders'].totals_data()
-        context['paid_orders'] = qs.recent().not_refunded().by_status(status='paid')[:4]
+        context['paid_orders'] = qs.recent().not_refunded().by_status(status='paid')
         context['paid_orders_data'] = context['paid_orders'].totals_data()
         return context
