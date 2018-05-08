@@ -24,7 +24,7 @@ Build Django powered eCommerce web application
 ## Current progress:
 Most of the features are [already live on Heroku!](https://nameless-waters-84605.herokuapp.com/)*
 
-<sub><sup>*If you are accessing it from Russia, you`ll probably need to use VPN service, because some of functionality that depends from US APIs can be banned atm.</sup></sub>
+<sub><sup>*If you are accessing it from Russia, you`ll probably need to use VPN service, because some of the functionality that depends from US APIs can be banned atm.</sup></sub>
 
 ![Progress bar](http://progressed.io/bar/100?title=done "Progress bar")
 
