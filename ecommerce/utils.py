@@ -54,7 +54,6 @@ def get_month_data_range(months_ago=1, include_this_month=False):
             'timesince': int((datetime.datetime.now() - end).total_seconds()),
             'year': start.year,
             'month': str(start.strftime("%B"))
-
         })
     return dates_
 
