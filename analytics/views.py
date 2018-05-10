@@ -1,4 +1,5 @@
 import datetime
+import random
 
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import JsonResponse
@@ -13,12 +14,38 @@ class SalesAjaxView(View):
     def get(self, request, *args, **kwargs):
         data = {}
         if request.user.is_staff:
+            qs = Order.objects.all().by_weeks_range(weeks_ago=5, number_of_weeks=5)
             if request.GET.get('type') == 'week':
-                data['labels'] = ["Mon", "Tue", "Wed", "Thurs", "Fri", "Sat", "Sun"]
-                data['data'] = [123, 121, 12, 54, 78, 99, 52]
+                days = 7
+                start_date = timezone.now().today() - datetime.timedelta(days=days-1)
+                datetime_list = []
+                labels = []
+                sales_items = []
+                for x in range(0, days):
+                    new_time = start_date + datetime.timedelta(days=x)
+                    datetime_list.append(
+                        new_time
+                    )
+                    labels.append(
+                        new_time.strftime("%a")
+                    )
+                    new_qs = qs.filter(updated__day=new_time.day, updated__month=new_time.month)
+                    day_total = new_qs.totals_data()['total__sum'] or 0
+                    sales_items.append(
+                        day_total
+                    )
+
+                data['labels'] = labels
+                data['data'] = sales_items
             if request.GET.get('type') == '4weeks':
-                data['labels'] = ["Last week", "Two weeks ago", "Three weeks ago", "Four weeks ago"]
-                data['data'] = [123, 121, 12, 54]
+                data['labels'] = ["Four weeks ago", "Three weeks ago", "Two weeks ago", "Last week", "This week"]
+                current = 5
+                data['data'] = []
+                for i in range(0, 5):
+                    new_qs = qs.by_weeks_range(weeks_ago=current, number_of_weeks=1)
+                    sales_total = new_qs.totals_data()['total__sum'] or 0
+                    data['data'].append(sales_total)
+                    current -= 1
         return JsonResponse(data)
 
 
