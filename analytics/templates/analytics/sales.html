@@ -3,46 +3,56 @@
 {% block javascript %}
 
     <script>
-        var ctx = document.getElementById("myChart").getContext('2d');
-        var myChart = new Chart(ctx, {
-            type: 'line',
-            data: {
-                labels: ["Mon", "Tue", "Wed", "Thurs", "Fri", "Sat", "Sun"],
-                datasets: [{
-                    label: 'Sales per day',
-                    data: [12, 19, 3, 5, 2, 3, 23],
-                    backgroundColor: 'rgba(75, 13, 132, 0.3)',
-                    borderColor: 'rgba(75, 13, 132, 1)',
-                    {#backgroundColor: [#}
-                    {#    'rgba(255, 99, 132, 0.2)',#}
-                    {#    'rgba(54, 162, 235, 0.2)',#}
-                    {#    'rgba(255, 206, 86, 0.2)',#}
-                    {#    'rgba(75, 192, 192, 0.2)',#}
-                    {#    'rgba(153, 102, 255, 0.2)',#}
-                    {#    'rgba(255, 159, 64, 0.2)',#}
-                    {#    'rgba(255, 159, 64, 0.2)'#}
-                    {#],#}
-                    {#borderColor: [#}
-                    {#    'rgba(255,99,132,1)',#}
-                    {#    'rgba(54, 162, 235, 1)',#}
-                    {#    'rgba(255, 206, 86, 1)',#}
-                    {#    'rgba(75, 192, 192, 1)',#}
-                    {#    'rgba(153, 102, 255, 1)',#}
-                    {#    'rgba(255, 159, 64, 1)',#}
-                    {#    'rgba(255, 159, 64, 1)'#}
-                    {#],#}
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                scales: {
-                    yAxes: [{
-                        ticks: {
-                            beginAtZero: true
+        $(document).ready(function () {
+            function renderChart(id, data, labels) {
+                var ctx = $("#" + id);
+                var myChart = new Chart(ctx, {
+                    type: "line",
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            label: "Sales",
+                            data: data,
+                            backgroundColor: "rgba(75, 13, 132, 0.3)",
+                            borderColor: "rgba(75, 13, 132, 1)",
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        scales: {
+                            yAxes: [{
+                                ticks: {
+                                    beginAtZero: true
+                                }
+                            }]
                         }
-                    }]
-                }
+                    }
+                });
             }
+
+            function getSalesData(id, type) {
+                var url = "/analytics/sales/data/";
+                var method = "GET";
+                var data = {"type": type};
+                $.ajax({
+                    url: url,
+                    method: method,
+                    data: data,
+                    success: function (responseData) {
+                        renderChart(id, responseData.data, responseData.labels)
+                    }, error: function (error) {
+                        $.alert("An error occured")
+                    }
+                })
+            }
+
+            var chartToRender = $(".render-chart");
+            $.each(chartToRender, function(index, html) {
+                var $this = $(this);
+                if ($this.attr("id") && $this.attr("data-type")) {
+                    getSalesData($this.attr("id"), $this.attr("data-type"))
+                }
+            })
         });
     </script>
 
@@ -80,7 +90,7 @@
             </ol>
         </div>
         <div class='col'>
-            <canvas id="myChart" width="400" height="400"></canvas>
+            <canvas class="render-chart" id="thisWeekSales" data-type="week" width="400" height="400"></canvas>
         </div>
     </div>
     <hr>
@@ -92,13 +102,12 @@
         </div>
         <div class='col'>
             <p>Orders Total: ${{ last_four_weeks.recent_data.total__sum }}</p>
-        </div>
-        <div class='col'>
-            <p>Shipped Total: {% if last_four_weeks.shipped_data.total__sum %}
-                ${{ last_four_weeks.shipped_data.total__sum }} {% endif %}</p>
-        </div>
-        <div class='col'>
+            <p>Shipped Total: {% if last_four_weeks.shipped_data.total__sum %}$
+                {{ last_four_weeks.shipped_data.total__sum }} {% endif %}</p>
             <p>Paid Totals: ${{ last_four_weeks.paid_data.total__sum }}</p>
+        </div>
+        <div class='col-8'>
+            <canvas class="render-chart" id="fourWeekSales" data-type="4weeks" width="400" height="400"></canvas>
         </div>
     </div>
 
