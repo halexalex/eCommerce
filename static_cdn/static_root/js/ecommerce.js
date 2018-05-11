@@ -106,10 +106,9 @@ $(document).ready(function () {
             method: httpMethod,
             data: data,
             success: function(data) {
-                console.log(data);
                 if (data.owner) {
                     isOwner = true;
-                    submitSpan.html("<a class='btn btn-link' href='/library/'>Already In Library</a>");
+                    submitSpan.html("<a class='btn btn-warning' href='/library/'>In Library</a>");
                 } else {
                     isOwner = false;
                 }
