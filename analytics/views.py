@@ -61,7 +61,9 @@ class SalesView(LoginRequiredMixin, TemplateView):
     def get_context_data(self, *args, **kwargs):
         context = super(SalesView, self).get_context_data(*args, **kwargs)
         qs = Order.objects.all().by_weeks_range(weeks_ago=10, number_of_weeks=10)
-        context['today'] = qs.by_range(start_date=timezone.now().date()).get_sales_breakdown()
+        start_date = timezone.now().date() - datetime.timedelta(hours=24)
+        end_date = timezone.now().date() + datetime.timedelta(hours=12)
+        context['today'] = qs.by_range(start_date=start_date, end_date=end_date).get_sales_breakdown()
         context['this_week'] = qs.by_weeks_range(weeks_ago=1, number_of_weeks=1).get_sales_breakdown()
         context['last_four_weeks'] = qs.all().by_weeks_range(weeks_ago=5, number_of_weeks=4).get_sales_breakdown()
         return context
