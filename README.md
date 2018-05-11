@@ -37,11 +37,10 @@ Next steps:
 - [x] Order Details (paid/shipped/refunded)
 - [x] Browsing History
 - [x] Selling digital items section
-- [ ] Graphs and Sales
-- [ ] UI/UX improvement
-- [ ] ???
+- [x] Graphs and Sales using [Chart.js](http://www.chartjs.org)
+![alt text](http://take.ms/eDtaL "Graphs")
 
-![Progress bar](http://progressed.io/bar/70 "Progress bar")
+![Progress bar](http://progressed.io/bar/100?title=done "Progress bar")
 
 
 
