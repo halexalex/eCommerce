@@ -20,16 +20,6 @@ Build Django powered eCommerce web application
 - [x] Implement HTTPs (using [Let's Encrypt](https://letsencrypt.org/) )
 - [x] Use [Amazon S3](https://aws.amazon.com/s3/) cloud storage for static files
 - [x] Integrate Email for server error notifications
-
-## Current progress:
-Most of the features are [already live on Heroku!](https://nameless-waters-84605.herokuapp.com/)*
-
-<sub><sup>*If you are accessing it from Russia, you`ll probably need to use VPN service, because some of the functionality that depends from US APIs can be banned atm.</sup></sub>
-
-![Progress bar](http://progressed.io/bar/100?title=done "Progress bar")
-
-Next steps:
-
 - [x] Account Detail page
 - [x] Password Management
 - [x] Email Activation
@@ -38,9 +28,17 @@ Next steps:
 - [x] Browsing History
 - [x] Selling digital items section
 - [x] Graphs and Sales using [Chart.js](http://www.chartjs.org)
-![alt text](http://take.ms/eDtaL "Graphs")
 
+## Current progress:
 ![Progress bar](http://progressed.io/bar/100?title=done "Progress bar")
+Project is finished and it is [live on Heroku!](https://nameless-waters-84605.herokuapp.com/)*
+
+<sub><sup>*If you are accessing it from Russia, you`ll probably need to use VPN services, because some of the functionality that depends from US APIs can be banned atm.</sup></sub>
+
+
+
+
+
 
 
 
