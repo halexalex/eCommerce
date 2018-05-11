@@ -4,8 +4,8 @@ import random
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.http import JsonResponse
 from django.shortcuts import render
-from django.views.generic import TemplateView, View
 from django.utils import timezone
+from django.views.generic import TemplateView, View
 
 from orders.models import Order
 
