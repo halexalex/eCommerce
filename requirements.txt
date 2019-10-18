@@ -19,4 +19,4 @@ requests==2.18.4
 s3transfer==0.1.13
 six==1.11.0
 stripe==1.77.2
-urllib3==1.22
+urllib3==1.24.2
